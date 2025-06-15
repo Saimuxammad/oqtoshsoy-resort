@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Горный Курорт Oqtoshsoy Resort - Бронирование</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2c5530, #4a7c59);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #a8d5ba;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        /* Booking Form */
+        .booking-section {
+            background: #f8f9fa;
+            padding: 4rem 0;
+            margin-top: -5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .booking-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #2c5530;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #4a7c59;
+        }
+
+        /* Room Types */
+        .rooms-section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c5530;
+        }
+
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .room-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .room-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .room-image {
+            height: 200px;
+            background: linear-gradient(135deg, #a8d5ba, #4a7c59);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .room-details {
+            padding: 1.5rem;
+        }
+
+        .room-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #2c5530;
+        }
+
+        .room-price {
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem 0;
+        }
+
+        .price-item {
+            text-align: center;
+        }
+
+        .price-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .price-amount {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2c5530;
+        }
+
+        .weekday-price {
+            color: #4a7c59;
+        }
+
+        .weekend-price {
+            color: #ee5a24;
+        }
+
+        .availability-calendar {
+            margin: 1rem 0;
+        }
+
+        .calendar-mini {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+            font-size: 0.8rem;
+        }
+
+        .calendar-day {
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .available {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .booked {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .selected {
+            background: #4a7c59;
+            color: white;
+        }
+
+        /* Services Section */
+        .services-section {
+            background: #f8f9fa;
+            padding: 4rem 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #4a7c59, #2c5530);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #2c5530, #4a7c59);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            padding: 1rem;
+        }
+
+        .contact-item h3 {
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .rooms-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Admin Panel Styles */
+        .admin-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            transition: right 0.3s;
+            z-index: 3000;
+            overflow-y: auto;
+        }
+
+        .admin-panel.open {
+            right: 0;
+        }
+
+        .admin-header {
+            background: #2c5530;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-content {
+            padding: 1rem;
+        }
+
+        .telegram-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #0088cc;
+            color: white;
+            padding: 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">🏔️ Oqtoshsoy Resort</div>
+            <ul class="nav-links">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#rooms">Номера</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#contact">Контакты</a></li>
+                <li><a href="#" onclick="openAdmin()">Админ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Горный Курорт Oqtoshsoy Resort</h1>
+            <p>Незабываемый отдых в сердце гор Ташкентской области</p>
+            <a href="#booking" class="cta-button">Забронировать номер</a>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking-section" id="booking">
+        <div class="container">
+            <div class="booking-card">
+                <h2 style="text-align: center; margin-bottom: 2rem; color: #2c5530;">Быстрое бронирование</h2>
+                <form id="quickBookingForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="checkin">Дата заезда</label>
+                            <input type="date" id="checkin" name="checkin" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout">Дата выезда</label>
+                            <input type="date" id="checkout" name="checkout" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="guests">Количество гостей</label>
+                            <select id="guests" name="guests" required>
+                                <option value="">Выберите</option>
+                                <option value="1">1 гость</option>
+                                <option value="2">2 гостя</option>
+                                <option value="3">3 гостя</option>
+                                <option value="4">4 гостя</option>
+                                <option value="6">6 гостей</option>
+                                <option value="8">8 гостей</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="meal">Питание</label>
+                            <select id="meal" name="meal" required>
+                                <option value="">Выберите</option>
+                                <option value="with">С питанием</option>
+                                <option value="without">Без питания</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="button" class="cta-button" onclick="searchRooms()" style="width: 100%; margin-top: 1rem;">
+                        🔍 Найти доступные номера
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section class="rooms-section" id="rooms">
+        <div class="container">
+            <h2 class="section-title">Наши номера</h2>
+            <div class="rooms-grid" id="roomsGrid">
+                <!-- Rooms will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <h2 class="section-title">Услуги и развлечения</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏊</div>
+                    <h3>Бассейн</h3>
+                    <p>Открытый бассейн с прекрасным видом на горы</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎾</div>
+                    <h3>Теннис</h3>
+                    <p>Теннисный корт для активного отдыха</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏓</div>
+                    <h3>Настольный теннис</h3>
+                    <p>Игра в пинг-понг для всей семьи</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎱</div>
+                    <h3>Бильярд</h3>
+                    <p>Бильярдная комната для вечернего досуга</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🧸</div>
+                    <h3>Детская зона</h3>
+                    <p>Безопасная игровая площадка для детей</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏕️</div>
+                    <h3>Топчаны</h3>
+                    <p>Аренда топчанов с утра до вечера</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Свяжитесь с нами</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>📞 Телефон</h3>
+                    <p>+998 XX XXX XX XX</p>
+                </div>
+                <div class="contact-item">
+                    <h3>📧 Email</h3>
+                    <p>info@avtosay-resort.uz</p>
+                </div>
+                <div class="contact-item">
+                    <h3>📍 Адрес</h3>
+                    <p>Ташкентская область, горный курорт Oqtoshsoy Resort</p>
+                </div>
+                <div class="contact-item">
+                    <h3>📱 Instagram</h3>
+                    <p>@avtosay_resort</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Горный Курорт Oqtoshsoy Resort. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Бронирование номера</h2>
+            <div id="modalContent">
+                <!-- Booking form will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div id="adminPanel" class="admin-panel">
+        <div class="admin-header">
+            <h3>Панель администратора</h3>
+            <span class="close" onclick="closeAdmin()">&times;</span>
+        </div>
+        <div class="admin-content">
+            <h4>Управление номерами</h4>
+            <button onclick="updateAvailability()" class="cta-button" style="width: 100%; margin: 1rem 0;">
+                Обновить доступность
+            </button>
+            <h4>Статистика бронирований</h4>
+            <div id="bookingStats">
+                <!-- Stats will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Telegram Widget -->
+    <div class="telegram-widget" onclick="openTelegram()">
+        💬 Telegram
+    </div>
+
+    <script>
+        // Room data
+        const rooms = [
+            {
+                id: 1,
+                name: "Двухместный Стандарт",
+                capacity: 2,
+                weekdayPrice: { with: 300000, without: 250000 },
+                weekendPrice: { with: 400000, without: 350000 },
+                image: "standard-2.jpg"
+            },
+            {
+                id: 2,
+                name: "Двухместный Люкс",
+                capacity: 2,
+                weekdayPrice: { with: 450000, without: 400000 },
+                weekendPrice: { with: 550000, without: 500000 },
+                image: "lux-2.jpg"
+            },
+            {
+                id: 3,
+                name: "Четырехместный Стандарт",
+                capacity: 4,
+                weekdayPrice: { with: 500000, without: 450000 },
+                weekendPrice: { with: 650000, without: 600000 },
+                image: "standard-4.jpg"
+            },
+            {
+                id: 4,
+                name: "Четырехместный Малый VIP",
+                capacity: 4,
+                weekdayPrice: { with: 700000, without: 650000 },
+                weekendPrice: { with: 850000, without: 800000 },
+                image: "vip-small-4.jpg"
+            },
+            {
+                id: 5,
+                name: "Четырехместный Большой VIP",
+                capacity: 4,
+                weekdayPrice: { with: 900000, without: 850000 },
+                weekendPrice: { with: 1100000, without: 1050000 },
+                image: "vip-big-4.jpg"
+            },
+            {
+                id: 6,
+                name: "Четырехместный Апартамент",
+                capacity: 4,
+                weekdayPrice: { with: 800000, without: 750000 },
+                weekendPrice: { with: 1000000, without: 950000 },
+                image: "apartment-4.jpg"
+            },
+            {
+                id: 7,
+                name: "Шестиместный Коттедж",
+                capacity: 6,
+                weekdayPrice: { with: 1200000, without: 1150000 },
+                weekendPrice: { with: 1500000, without: 1450000 },
+                image: "cottage-6.jpg"
+            },
+            {
+                id: 8,
+                name: "Восьмиместный Президентский",
+                capacity: 8,
+                weekdayPrice: { with: 2000000, without: 1950000 },
+                weekendPrice: { with: 2500000, without: 2450000 },
+                image: "presidential-8.jpg"
+            }
+        ];
+
+        // Initialize availability data (this would come from backend)
+        let availability = {};
+
+        // Initialize rooms on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            displayRooms();
+            setMinDate();
+            initializeAvailability();
+        });
+
+        function setMinDate() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('checkin').min = today;
+            document.getElementById('checkout').min = today;
+
+            document.getElementById('checkin').addEventListener('change', function() {
+                const checkinDate = new Date(this.value);
+                checkinDate.setDate(checkinDate.getDate() + 1);
+                document.getElementById('checkout').min = checkinDate.toISOString().split('T')[0];
+            });
+        }
+
+        function initializeAvailability() {
+            const today = new Date();
+            for (let i = 0; i < 90; i++) {
+                const date = new Date(today);
+                date.setDate(date.getDate() + i);
+                const dateStr = date.toISOString().split('T')[0];
+
+                rooms.forEach(room => {
+                    if (!availability[room.id]) {
+                        availability[room.id] = {};
+                    }
+                    // Randomly set some dates as booked for demo
+                    availability[room.id][dateStr] = Math.random() > 0.3;
+                });
+            }
+        }
+
+        function displayRooms() {
+            const roomsGrid = document.getElementById('roomsGrid');
+            roomsGrid.innerHTML = '';
+
+            rooms.forEach(room => {
+                const roomCard = createRoomCard(room);
+                roomsGrid.appendChild(roomCard);
+            });
+        }
+
+        function createRoomCard(room) {
+            const card = document.createElement('div');
+            card.className = 'room-card';
+
+            card.innerHTML = `
+                <div class="room-image">
+                    📸 ${room.name}
+                </div>
+                <div class="room-details">
+                    <div class="room-title">${room.name}</div>
+                    <p>Вместимость: ${room.capacity} гостей</p>
+
+                    <div class="room-price">
+                        <div class="price-item">
+                            <div class="price-label">Будни</div>
+                            <div class="price-amount weekday-price">
+                                ${formatPrice(room.weekdayPrice.without)} - ${formatPrice(room.weekdayPrice.with)}
+                            </div>
+                        </div>
+                        <div class="price-item">
+                            <div class="price-label">Выходные</div>
+                            <div class="price-amount weekend-price">
+                                ${formatPrice(room.weekendPrice.without)} - ${formatPrice(room.weekendPrice.with)}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="availability-calendar">
+                        <h4>Доступность (ближайшие дни):</h4>
+                        ${generateMiniCalendar(room.id)}
+                    </div>
+
+                    <button class="cta-button" onclick="bookRoom(${room.id})" style="width: 100%; margin-top: 1rem;">
+                        Забронировать
+                    </button>
+                </div>
+            `;
+
+            return card;
+        }
+
+        function generateMiniCalendar(roomId) {
+            const today = new Date();
+            let calendar = '<div class="calendar-mini">';
+
+            for (let i = 0; i < 14; i++) {
+                const date = new Date(today);
+                date.setDate(date.getDate() + i);
+                const dateStr = date.toISOString().split('T')[0];
+                const isAvailable = availability[roomId] && availability[roomId][dateStr];
+
+                calendar += `
+                    <div class="calendar-day ${isAvailable ? 'available' : 'booked'}"
+                         title="${date.toLocaleDateString('ru-RU')}"
+                         onclick="selectDate('${dateStr}', ${roomId})">
+                        ${date.getDate()}
+                    </div>
+                `;
+            }
+
+            calendar += '</div>';
+            return calendar;
+        }
+
+        function formatPrice(price) {
+            return new Intl.NumberFormat('uz-UZ').format(price) + ' сум';
+        }
+
+        function searchRooms() {
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+            const guests = document.getElementById('guests').value;
+            const meal = document.getElementById('meal').value;
+
+            if (!checkin || !checkout || !guests || !meal) {
+                alert('Пожалуйста, заполните все поля');
+                return;
+            }
+
+            const filteredRooms = rooms.filter(room => room.capacity >= parseInt(guests));
+            displayFilteredRooms(filteredRooms, checkin, checkout, meal);
+        }
+
+        function displayFilteredRooms(filteredRooms, checkin, checkout, meal) {
+            const roomsGrid = document.getElementById('roomsGrid');
+            roomsGrid.innerHTML = '';
+
+            if (filteredRooms.length === 0) {
+                roomsGrid.innerHTML = '<p style="text-align: center; grid-column: 1/-1;">Нет доступных номеров для выбранных параметров</p>';
+                return;
+            }
+
+            filteredRooms.forEach(room => {
+                if (isRoomAvailable(room.id, checkin, checkout)) {
+                    const roomCard = createRoomCard(room);
+                    roomsGrid.appendChild(roomCard);
+                }
+            });
+        }
+
+        function isRoomAvailable(roomId, checkin, checkout) {
+            const start = new Date(checkin);
+            const end = new Date(checkout);
+
+            for (let d = new Date(start); d < end; d.setDate(d.getDate() + 1)) {
+                const dateStr = d.toISOString().split('T')[0];
+                if (!availability[roomId] || !availability[roomId][dateStr]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function bookRoom(roomId) {
+            const room = rooms.find(r => r.id === roomId);
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+            const guests = document.getElementById('guests').value;
+            const meal = document.getElementById('meal').value;
+
+            if (!checkin || !checkout) {
+                alert('Пожалуйста, выберите даты заезда и выезда');
+                return;
+            }
+
+            if (!isRoomAvailable(roomId, checkin, checkout)) {
+                alert('К сожалению, этот номер недоступен на выбранные даты');
+                return;
+            }
+
+            showBookingModal(room, checkin, checkout, guests, meal);
+        }
+
+        function showBookingModal(room, checkin, checkout, guests, meal) {
+            const modal = document.getElementById('bookingModal');
+            const modalContent = document.getElementById('modalContent');
+
+            const checkinDate = new Date(checkin);
+            const checkoutDate = new Date(checkout);
+            const nights = Math.ceil((checkoutDate - checkinDate) / (1000 * 60 * 60 * 24));
+
+            let totalPrice = 0;
+            for (let d = new Date(checkinDate); d < checkoutDate; d.setDate(d.getDate() + 1)) {
+                const dayOfWeek = d.getDay();
+                const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+                const dayPrice = isWeekend ? room.weekendPrice[meal] : room.weekdayPrice[meal];
+                totalPrice += dayPrice;
+            }
+
+            modalContent.innerHTML = `
+                <h3>Подтверждение бронирования</h3>
+                <div style="margin: 1rem 0;">
+                    <p><strong>Номер:</strong> ${room.name}</p>
+                    <p><strong>Даты:</strong> ${checkinDate.toLocaleDateString('ru-RU')} - ${checkoutDate.toLocaleDateString('ru-RU')}</p>
+                    <p><strong>Ночей:</strong> ${nights}</p>
+                    <p><strong>Гостей:</strong> ${guests}</p>
+                    <p><strong>Питание:</strong> ${meal === 'with' ? 'С питанием' : 'Без питания'}</p>
+                    <p><strong>Общая стоимость:</strong> ${formatPrice(totalPrice)}</p>
+                </div>
+
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label for="customerName">Ваше имя</label>
+                        <input type="text" id="customerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerPhone">Телефон</label>
+                        <input type="tel" id="customerPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerEmail">Email (опционально)</label>
+                        <input type="email" id="customerEmail">
+                    </div>
+                    <div class="form-group">
+                        <label for="specialRequests">Особые пожелания</label>
+                        <textarea id="specialRequests" rows="3" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 10px;"></textarea>
+                    </div>
+
+                    <button type="button" onclick="confirmBooking(${room.id}, '${checkin}', '${checkout}', ${guests}, '${meal}', ${totalPrice})"
+                            class="cta-button" style="width: 100%; margin-top: 1rem;">
+                        Подтвердить бронирование
+                    </button>
+                </form>
+            `;
+
+            modal.style.display = 'block';
+        }
+
+        function confirmBooking(roomId, checkin, checkout, guests, meal, totalPrice) {
+            const name = document.getElementById('customerName').value;
+            const phone = document.getElementById('customerPhone').value;
+            const email = document.getElementById('customerEmail').value;
+            const requests = document.getElementById('specialRequests').value;
+
+            if (!name || !phone) {
+                alert('Пожалуйста, заполните обязательные поля');
+                return;
+            }
+
+            // Block dates in availability
+            const start = new Date(checkin);
+            const end = new Date(checkout);
+            for (let d = new Date(start); d < end; d.setDate(d.getDate() + 1)) {
+                const dateStr = d.toISOString().split('T')[0];
+                availability[roomId][dateStr] = false;
+            }
+
+            // Send booking to Telegram
+            sendBookingToTelegram({
+                roomId,
+                roomName: rooms.find(r => r.id === roomId).name,
+                checkin,
+                checkout,
+                guests,
+                meal,
+                totalPrice,
+                customerName: name,
+                customerPhone: phone,
+                customerEmail: email,
+                specialRequests: requests
+            });
+
+            alert('Спасибо! Ваше бронирование принято. Мы свяжемся с вами в ближайшее время.');
+            closeModal();
+            displayRooms(); // Refresh room display
+        }
+
+        function sendBookingToTelegram(booking) {
+            // This would send data to your Telegram bot
+            console.log('Booking sent to Telegram:', booking);
+
+            // In real implementation, you would make an API call to your backend
+            // which would then send the message to Telegram
+            /*
+            fetch('/api/send-booking-telegram', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(booking)
+            });
+            */
+        }
+
+        function selectDate(dateStr, roomId) {
+            const checkinInput = document.getElementById('checkin');
+            const checkoutInput = document.getElementById('checkout');
+
+            if (!checkinInput.value) {
+                checkinInput.value = dateStr;
+            } else if (!checkoutInput.value && dateStr > checkinInput.value) {
+                checkoutInput.value = dateStr;
+            } else {
+                checkinInput.value = dateStr;
+                checkoutInput.value = '';
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('bookingModal').style.display = 'none';
+        }
+
+        function openAdmin() {
+            const password = prompt('Введите пароль администратора:');
+            if (password === 'admin123') { // Change this to a secure password
+                document.getElementById('adminPanel').classList.add('open');
+                loadAdminStats();
+            } else {
+                alert('Неверный пароль');
+            }
+        }
+
+        function closeAdmin() {
+            document.getElementById('adminPanel').classList.remove('open');
+        }
+
+        function updateAvailability() {
+            alert('Доступность номеров обновлена');
+            // In real implementation, this would sync with backend
+        }
+
+        function loadAdminStats() {
+            const statsDiv = document.getElementById('bookingStats');
+
+            // Calculate some basic stats
+            let totalBookings = 0;
+            let occupancyRate = 0;
+
+            rooms.forEach(room => {
+                const roomBookings = Object.values(availability[room.id] || {}).filter(available => !available).length;
+                totalBookings += roomBookings;
+            });
+
+            occupancyRate = Math.round((totalBookings / (rooms.length * 90)) * 100);
+
+            statsDiv.innerHTML = `
+                <p><strong>Всего бронирований:</strong> ${totalBookings}</p>
+                <p><strong>Загруженность:</strong> ${occupancyRate}%</p>
+                <p><strong>Активных номеров:</strong> ${rooms.length}</p>
+            `;
+        }
+
+        function openTelegram() {
+            // Open Telegram bot or show QR code
+            const botUsername = 'avtosay_booking_bot'; // Replace with your bot username
+            window.open(`https://t.me/${botUsername}`, '_blank');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('bookingModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Auto-hide header on scroll (mobile)
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (window.innerWidth <= 768) {
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    header.style.transform = 'translateY(-100%)';
+                } else {
+                    header.style.transform = 'translateY(0)';
+                }
+            }
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>

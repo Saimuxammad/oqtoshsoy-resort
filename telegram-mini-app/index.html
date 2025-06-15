@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oqtoshsoy - Бронирование</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        /* Компактные стили для мини-приложения */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--tg-theme-bg-color, #ffffff);
+            color: var(--tg-theme-text-color, #333333);
+            padding: 16px;
+        }
+
+        .mini-app-container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .booking-form {
+            background: var(--tg-theme-secondary-bg-color, #f8f9fa);
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: 500;
+            color: var(--tg-theme-text-color, #333);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--tg-theme-button-color, #2481cc);
+            border-radius: 8px;
+            font-size: 16px;
+            background: var(--tg-theme-bg-color, #ffffff);
+            color: var(--tg-theme-text-color, #333);
+        }
+
+        .room-card {
+            background: var(--tg-theme-bg-color, #ffffff);
+            border: 1px solid var(--tg-theme-button-color, #2481cc);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .room-card:hover {
+            background: var(--tg-theme-secondary-bg-color, #f8f9fa);
+        }
+
+        .room-card.selected {
+            border-color: var(--tg-theme-button-color, #2481cc);
+            background: var(--tg-theme-secondary-bg-color, #f0f8ff);
+        }
+
+        .room-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .room-price {
+            color: var(--tg-theme-button-color, #2481cc);
+            font-weight: bold;
+        }
+
+        .total-price {
+            background: var(--tg-theme-button-color, #2481cc);
+            color: white;
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 16px 0;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 20px 0 12px;
+            color: var(--tg-theme-text-color, #333);
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="mini-app-container">
+        <!-- Шаг 1: Выбор дат -->
+        <div id="step1" class="step">
+            <h2 class="section-title">📅 Выберите даты</h2>
+            <div class="booking-form">
+                <div class="form-group">
+                    <label for="checkin">Дата заезда</label>
+                    <input type="date" id="checkin" required>
+                </div>
+                <div class="form-group">
+                    <label for="checkout">Дата выезда</label>
+                    <input type="date" id="checkout" required>
+                </div>
+                <div class="form-group">
+                    <label for="guests">Количество гостей</label>
+                    <select id="guests" required>
+                        <option value="">Выберите</option>
+                        <option value="1">1 гость</option>
+                        <option value="2">2 гостя</option>
+                        <option value="3">3 гостя</option>
+                        <option value="4">4 гостя</option>
+                        <option value="6">6 гостей</option>
+                        <option value="8">8 гостей</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="meal">Питание</label>
+                    <select id="meal" required>
+                        <option value="">Выберите</option>
+                        <option value="with">С питанием</option>
+                        <option value="without">Без питания</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Шаг 2: Выбор номера -->
+        <div id="step2" class="step hidden">
+            <h2 class="section-title">🏠 Выберите номер</h2>
+            <div id="roomsList">
+                <!-- Номера будут загружены динамически -->
+            </div>
+        </div>
+
+        <!-- Шаг 3: Подтверждение -->
+        <div id="step3" class="step hidden">
+            <h2 class="section-title">✅ Подтверждение</h2>
+            <div class="booking-form">
+                <div class="form-group">
+                    <label for="customerName">Ваше имя</label>
+                    <input type="text" id="customerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerPhone">Телефон</label>
+                    <input type="tel" id="customerPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerEmail">Email (опционально)</label>
+                    <input type="email" id="customerEmail">
+                </div>
+                <div class="form-group">
+                    <label for="specialRequests">Особые пожелания</label>
+                    <textarea id="specialRequests" rows="3"></textarea>
+                </div>
+            </div>
+
+            <div id="bookingSummary" class="booking-form">
+                <!-- Итоги бронирования -->
+            </div>
+
+            <div class="total-price" id="totalPrice">
+                Общая стоимость: 0 сум
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Telegram WebApp API
+        const tg = window.Telegram.WebApp;
+        tg.ready();
+        tg.expand();
+
+        // Настройка интерфейса
+        tg.setHeaderColor('#2c5530');
+        tg.MainButton.setText('Продолжить');
+        tg.MainButton.show();
+
+        // Состояние приложения
+        let currentStep = 1;
+        let selectedRoom = null;
+        let bookingData = {};
+
+        // Данные номеров
+        const rooms = [
+            {
+                id: 1,
+                name: "Двухместный Стандарт",
+                capacity: 2,
+                weekdayPrice: { with: 300000, without: 250000 },
+                weekendPrice: { with: 400000, without: 350000 }
+            },
+            {
+                id: 2,
+                name: "Двухместный Люкс",
+                capacity: 2,
+                weekdayPrice: { with: 450000, without: 400000 },
+                weekendPrice: { with: 550000, without: 500000 }
+            },
+            {
+                id: 3,
+                name: "Четырехместный Стандарт",
+                capacity: 4,
+                weekdayPrice: { with: 500000, without: 450000 },
+                weekendPrice: { with: 650000, without: 600000 }
+            },
+            {
+                id: 4,
+                name: "Четырехместный Малый VIP",
+                capacity: 4,
+                weekdayPrice: { with: 700000, without: 650000 },
+                weekendPrice: { with: 850000, without: 800000 }
+            },
+            {
+                id: 5,
+                name: "Четырехместный Большой VIP",
+                capacity: 4,
+                weekdayPrice: { with: 900000, without: 850000 },
+                weekendPrice: { with: 1100000, without: 1050000 }
+            },
+            {
+                id: 6,
+                name: "Четырехместный Апартамент",
+                capacity: 4,
+                weekdayPrice: { with: 800000, without: 750000 },
+                weekendPrice: { with: 1000000, without: 950000 }
+            },
+            {
+                id: 7,
+                name: "Шестиместный Коттедж",
+                capacity: 6,
+                weekdayPrice: { with: 1200000, without: 1150000 },
+                weekendPrice: { with: 1500000, without: 1450000 }
+            },
+            {
+                id: 8,
+                name: "Восьмиместный Президентский",
+                capacity: 8,
+                weekdayPrice: { with: 2000000, without: 1950000 },
+                weekendPrice: { with: 2500000, without: 2450000 }
+            }
+        ];
+
+        // Инициализация
+        function init() {
+            setMinDate();
+            setupEventListeners();
+            updateMainButton();
+        }
+
+        function setMinDate() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('checkin').min = today;
+            document.getElementById('checkout').min = today;
+        }
+
+        function setupEventListeners() {
+            // Изменение дат
+            document.getElementById('checkin').addEventListener('change', function() {
+                const checkinDate = new Date(this.value);
+                checkinDate.setDate(checkinDate.getDate() + 1);
+                document.getElementById('checkout').min = checkinDate.toISOString().split('T')[0];
+                updateMainButton();
+            });
+
+            // Другие поля
+            ['checkout', 'guests', 'meal'].forEach(id => {
+                document.getElementById(id).addEventListener('change', updateMainButton);
+            });
+
+            // Главная кнопка
+            tg.MainButton.onClick(handleMainButtonClick);
+        }
+
+        function updateMainButton() {
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+            const guests = document.getElementById('guests').value;
+            const meal = document.getElementById('meal').value;
+
+            if (currentStep === 1) {
+                if (checkin && checkout && guests && meal) {
+                    tg.MainButton.setText('Выбрать номер');
+                    tg.MainButton.enable();
+                } else {
+                    tg.MainButton.setText('Заполните все поля');
+                    tg.MainButton.disable();
+                }
+            } else if (currentStep === 2) {
+                if (selectedRoom) {
+                    tg.MainButton.setText('Подтвердить');
+                    tg.MainButton.enable();
+                } else {
+                    tg.MainButton.setText('Выберите номер');
+                    tg.MainButton.disable();
+                }
+            } else if (currentStep === 3) {
+                const name = document.getElementById('customerName').value;
+                const phone = document.getElementById('customerPhone').value;
+
+                if (name && phone) {
+                    tg.MainButton.setText('Забронировать');
+                    tg.MainButton.enable();
+                } else {
+                    tg.MainButton.setText('Заполните данные');
+                    tg.MainButton.disable();
+                }
+            }
+        }
+
+        function handleMainButtonClick() {
+            if (currentStep === 1) {
+                showRoomsStep();
+            } else if (currentStep === 2) {
+                showConfirmationStep();
+            } else if (currentStep === 3) {
+                confirmBooking();
+            }
+        }
+
+        function showRoomsStep() {
+            const guests = parseInt(document.getElementById('guests').value);
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+            const meal = document.getElementById('meal').value;
+
+            // Фильтруем номера по вместимости
+            const availableRooms = rooms.filter(room => room.capacity >= guests);
+
+            // Показываем номера
+            const roomsList = document.getElementById('roomsList');
+            roomsList.innerHTML = '';
+
+            availableRooms.forEach(room => {
+                const roomCard = createRoomCard(room, checkin, checkout, meal);
+                roomsList.appendChild(roomCard);
+            });
+
+            // Переключаем шаг
+            document.getElementById('step1').classList.add('hidden');
+            document.getElementById('step2').classList.remove('hidden');
+            currentStep = 2;
+            updateMainButton();
+
+            // Показываем кнопку "Назад"
+            tg.BackButton.show();
+            tg.BackButton.onClick(() => {
+                document.getElementById('step2').classList.add('hidden');
+                document.getElementById('step1').classList.remove('hidden');
+                currentStep = 1;
+                updateMainButton();
+                tg.BackButton.hide();
+            });
+        }
+
+        function createRoomCard(room, checkin, checkout, meal) {
+            const card = document.createElement('div');
+            card.className = 'room-card';
+            card.onclick = () => selectRoom(room, card);
+
+            // Рассчитываем стоимость
+            const totalPrice = calculatePrice(room, checkin, checkout, meal);
+
+            card.innerHTML = `
+                <div class="room-title">${room.name}</div>
+                <div>Вместимость: ${room.capacity} гостей</div>
+                <div class="room-price">Общая стоимость: ${totalPrice.toLocaleString()} сум</div>
+            `;
+
+            return card;
+        }
+
+        function selectRoom(room, cardElement) {
+            // Убираем выделение с других карточек
+            document.querySelectorAll('.room-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+
+            // Выделяем выбранную карточку
+            cardElement.classList.add('selected');
+            selectedRoom = room;
+            updateMainButton();
+        }
+
+        function calculatePrice(room, checkin, checkout, meal) {
+            const start = new Date(checkin);
+            const end = new Date(checkout);
+            let total = 0;
+
+            for (let d = new Date(start); d < end; d.setDate(d.getDate() + 1)) {
+                const dayOfWeek = d.getDay();
+                const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+                const dayPrice = isWeekend ? room.weekendPrice[meal] : room.weekdayPrice[meal];
+                total += dayPrice;
+            }
+
+            return total;
+        }
+
+        function showConfirmationStep() {
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+            const guests = document.getElementById('guests').value;
+            const meal = document.getElementById('meal').value;
+
+            // Создаем итоги бронирования
+            const totalPrice = calculatePrice(selectedRoom, checkin, checkout, meal);
+            const nights = Math.ceil((new Date(checkout) - new Date(checkin)) / (1000 * 60 * 60 * 24));
+
+            const summary = document.getElementById('bookingSummary');
+            summary.innerHTML = `
+                <h3>Детали бронирования:</h3>
+                <p><strong>Номер:</strong> ${selectedRoom.name}</p>
+                <p><strong>Даты:</strong> ${new Date(checkin).toLocaleDateString('ru-RU')} - ${new Date(checkout).toLocaleDateString('ru-RU')}</p>
+                <p><strong>Ночей:</strong> ${nights}</p>
+                <p><strong>Гостей:</strong> ${guests}</p>
+                <p><strong>Питание:</strong> ${meal === 'with' ? 'С питанием' : 'Без питания'}</p>
+            `;
+
+            document.getElementById('totalPrice').textContent = `Общая стоимость: ${totalPrice.toLocaleString()} сум`;
+
+            // Переключаем шаг
+            document.getElementById('step2').classList.add('hidden');
+            document.getElementById('step3').classList.remove('hidden');
+            currentStep = 3;
+            updateMainButton();
+
+            // Обновляем кнопку "Назад"
+            tg.BackButton.onClick(() => {
+                document.getElementById('step3').classList.add('hidden');
+                document.getElementById('step2').classList.remove('hidden');
+                currentStep = 2;
+                updateMainButton();
+            });
+        }
+
+        function confirmBooking() {
+            const bookingData = {
+                room_id: selectedRoom.id,
+                customer_name: document.getElementById('customerName').value,
+                customer_phone: document.getElementById('customerPhone').value,
+                customer_email: document.getElementById('customerEmail').value,
+                checkin_date: document.getElementById('checkin').value,
+                checkout_date: document.getElementById('checkout').value,
+                guests_count: parseInt(document.getElementById('guests').value),
+                meal_option: document.getElementById('meal').value,
+                special_requests: document.getElementById('specialRequests').value,
+                total_price: calculatePrice(selectedRoom, document.getElementById('checkin').value, document.getElementById('checkout').value, document.getElementById('meal').value),
+                telegram_user_id: tg.initDataUnsafe?.user?.id
+            };
+
+            // Отправляем данные в Telegram
+            tg.sendData(JSON.stringify(bookingData));
+
+            // Показываем уведомление
+            tg.showAlert('Бронирование отправлено! Мы свяжемся с вами в ближайшее время.');
+
+            // Закрываем мини-приложение
+            tg.close();
+        }
+
+        // Форматирование полей ввода
+        document.getElementById('customerName').addEventListener('input', updateMainButton);
+        document.getElementById('customerPhone').addEventListener('input', updateMainButton);
+
+        // Инициализация при загрузке
+        init();
+    </script>
+</body>
+</html>
