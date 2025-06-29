@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+
+{% block title %}{{ t.hero_title }}{% endblock %}
+
+{% block content %}
+<!-- Hero секция -->
+<section class="hero">
+    <div class="hero-background">
+        <img src="{{ url_for('static', filename='images/hero-bg.jpg') }}" alt="Oqtoshsoy Resort">
+        <div class="hero-overlay"></div>
+    </div>
+
+    <div class="hero-content">
+        <h1 class="hero-title animate-fade-in">{{ t.hero_title }}</h1>
+        <p class="hero-subtitle animate-fade-in-delay">{{ t.hero_subtitle }}</p>
+        <a href="/booking" class="btn btn-primary btn-large animate-fade-in-delay-2">{{ t.hero_cta }}</a>
+    </div>
+
+    <div class="hero-scroll-indicator">
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
+
+<!-- О курорте -->
+<section class="about section-padding">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">{{ t.about_title }}</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="about-content">
+            <p class="about-text">{{ t.about_text }}</p>
+
+            <div class="features-grid">
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <h3>{{ t.features_comfort }}</h3>
+                    <p>Standard, Lux, VIP, Apartment</p>
+                </div>
+
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>{{ t.features_nature }}</h3>
+                    <p>{{ t.family_only }}</p>
+                </div>
+
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <i class="fas fa-concierge-bell"></i>
+                    </div>
+                    <h3>{{ t.features_service }}</h3>
+                    <p>24/7</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Услуги превью -->
+<section class="services-preview section-padding bg-light">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">{{ t.included_services }}</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-item animate-on-scroll">
+                <i class="fas fa-swimming-pool"></i>
+                <span>{{ t.pool }}</span>
+            </div>
+            <div class="service-item animate-on-scroll">
+                <i class="fas fa-table-tennis"></i>
+                <span>{{ t.tennis }}</span>
+            </div>
+            <div class="service-item animate-on-scroll">
+                <i class="fas fa-child"></i>
+                <span>{{ t.playground }}</span>
+            </div>
+            <div class="service-item animate-on-scroll">
+                <i class="fas fa-parking"></i>
+                <span>{{ t.parking }}</span>
+            </div>
+            <div class="service-item animate-on-scroll">
+                <i class="fas fa-wifi"></i>
+                <span>{{ t.wifi }}</span>
+            </div>
+            <div class="service-item animate-on-scroll">
+                <i class="fas fa-coffee"></i>
+                <span>{{ t.breakfast }}</span>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="/services" class="btn btn-outline">{{ t.nav_services }}</a>
+        </div>
+    </div>
+</section>
+
+<!-- Галерея превью -->
+<section class="gallery-preview section-padding">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">{{ t.gallery_title }}</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item animate-on-scroll">
+                <img src="{{ url_for('static', filename='images/gallery/room1.jpg') }}" alt="Room">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
+            </div>
+            <div class="gallery-item animate-on-scroll">
+                <img src="{{ url_for('static', filename='images/gallery/pool.jpg') }}" alt="Pool">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
+            </div>
+            <div class="gallery-item animate-on-scroll">
+                <img src="{{ url_for('static', filename='images/gallery/nature.jpg') }}" alt="Nature">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
+            </div>
+            <div class="gallery-item animate-on-scroll">
+                <img src="{{ url_for('static', filename='images/gallery/restaurant.jpg') }}" alt="Restaurant">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="/gallery" class="btn btn-outline">{{ t.gallery_title }}</a>
+        </div>
+    </div>
+</section>
+
+<!-- CTA секция -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>{{ t.reserve_now }}</h2>
+            <p>{{ t.contact_phone }}: +998 90 096-50-55</p>
+            <a href="/booking" class="btn btn-white btn-large">{{ t.nav_booking }}</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

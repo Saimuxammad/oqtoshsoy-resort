@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+
+{% block title %}{{ t.rooms_title }} - Oqtoshsoy Resort{% endblock %}
+
+{% block content %}
+<!-- Заголовок страницы -->
+<section class="page-header">
+    <div class="container">
+        <h1 class="page-title">{{ t.rooms_title }}</h1>
+        <nav class="breadcrumb">
+            <a href="/">{{ t.nav_home }}</a>
+            <span>/</span>
+            <span>{{ t.nav_rooms }}</span>
+        </nav>
+    </div>
+</section>
+
+<!-- Номера и цены -->
+<section class="rooms-section section-padding">
+    <div class="container">
+        <!-- Навигация по категориям -->
+        <div class="price-categories">
+            <button class="category-btn active" data-category="without_meals">{{ t.without_meals }}</button>
+            <button class="category-btn" data-category="with_meals">{{ t.with_meals }}</button>
+        </div>
+
+        <!-- Таблица цен без питания -->
+        <div class="price-table-container" id="without_meals">
+            <h3 class="price-subtitle">{{ t.without_meals }}</h3>
+
+            <!-- Будние дни -->
+            <div class="price-section">
+                <h4 class="price-period">{{ t.weekdays }} ({{ lang == 'uz' ? 'Dushanba - Payshanba' : 'Понедельник - Четверг' }})</h4>
+                <div class="rooms-grid">
+                    {% for room_key, room in rooms.items() %}
+                    <div class="room-card animate-on-scroll">
+                        <div class="room-header">
+                            <h4>{{ room[lang] }}</h4>
+                            <span class="room-capacity"><i class="fas fa-user"></i> {{ room.capacity }}</span>
+                        </div>
+                        <div class="room-price">
+                            <span class="price">{{ "{:,}".format(room.weekday_no_meal).replace(',', ' ') }}</span>
+                            <span class="currency">{{ lang == 'uz' ? "so'm" : "сум" }}</span>
+                        </div>
+                        <a href="/booking" class="btn btn-small btn-outline">{{ t.reserve_now }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Выходные дни -->
+            <div class="price-section">
+                <h4 class="price-period">{{ t.weekends }} ({{ lang == 'uz' ? 'Juma - Yakshanba' : 'Пятница - Воскресенье' }})</h4>
+                <div class="rooms-grid">
+                    {% for room_key, room in rooms.items() %}
+                    <div class="room-card animate-on-scroll">
+                        <div class="room-header">
+                            <h4>{{ room[lang] }}</h4>
+                            <span class="room-capacity"><i class="fas fa-user"></i> {{ room.capacity }}</span>
+                        </div>
+                        <div class="room-price">
+                            <span class="price">{{ "{:,}".format(room.weekend_no_meal).replace(',', ' ') }}</span>
+                            <span class="currency">{{ lang == 'uz' ? "so'm" : "сум" }}</span>
+                        </div>
+                        <a href="/booking" class="btn btn-small btn-outline">{{ t.reserve_now }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Таблица цен с питанием -->
+        <div class="price-table-container" id="with_meals" style="display: none;">
+            <h3 class="price-subtitle">{{ t.with_meals }}</h3>
+            <p class="meal-info">
+                <i class="fas fa-utensils"></i>
+                {{ lang == 'uz' ? 'Nonushta, tushlik va kechki ovqat kiradi' : 'Включено: завтрак, обед и ужин' }}
+            </p>
+
+            <div class="rooms-grid">
+                {% for room_key, room in rooms.items() %}
+                <div class="room-card animate-on-scroll">
+                    <div class="room-header">
+                        <h4>{{ room[lang] }}</h4>
+                        <span class="room-capacity"><i class="fas fa-user"></i> {{ room.capacity }}</span>
+                    </div>
+                    <div class="room-price">
+                        <span class="price">{{ "{:,}".format(room.with_meal).replace(',', ' ') }}</span>
+                        <span class="currency">{{ lang == 'uz' ? "so'm" : "сум" }}</span>
+                    </div>
+                    <div class="meal-included">
+                        <span><i class="fas fa-check"></i> {{ t.breakfast }}</span>
+                        <span><i class="fas fa-check"></i> {{ t.lunch }}</span>
+                        <span><i class="fas fa-check"></i> {{ t.dinner }}</span>
+                    </div>
+                    <a href="/booking" class="btn btn-small btn-primary">{{ t.reserve_now }}</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Дополнительная информация -->
+        <div class="additional-info">
+            <div class="info-card">
+                <h4>{{ t.included_services }}</h4>
+                <ul class="services-list">
+                    <li><i class="fas fa-check-circle"></i> {{ t.breakfast }}</li>
+                    <li><i class="fas fa-check-circle"></i> {{ t.pool }}</li>
+                    <li><i class="fas fa-check-circle"></i> {{ t.tennis }}</li>
+                    <li><i class="fas fa-check-circle"></i> {{ t.playground }} (1 {{ lang == 'uz' ? 'soat' : 'час' }})</li>
+                    <li><i class="fas fa-check-circle"></i> {{ t.parking }}</li>
+                    <li><i class="fas fa-check-circle"></i> {{ t.wifi }}</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h4>{{ t.additional_services }}</h4>
+                <ul class="services-list">
+                    <li><i class="fas fa-info-circle"></i> {{ t.billiard }} (1 {{ lang == 'uz' ? 'soat' : 'час' }})</li>
+                    <li><i class="fas fa-info-circle"></i> {{ t.salt_room }} (1 {{ lang == 'uz' ? 'soat' : 'час' }})</li>
+                    <li><i class="fas fa-info-circle"></i> {{ t.gazebo_small }}: 900 000 - 1 100 000</li>
+                    <li><i class="fas fa-info-circle"></i> {{ t.gazebo_large }}: 1 500 000 - 1 800 000</li>
+                    <li><i class="fas fa-info-circle"></i> {{ t.extra_mattress }}: 250 000</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h4>{{ lang == 'uz' ? 'Muhim ma\'lumotlar' : 'Важная информация' }}</h4>
+                <ul class="services-list">
+                    <li><i class="fas fa-clock"></i> {{ t.checkin }}: 14:00</li>
+                    <li><i class="fas fa-clock"></i> {{ t.checkout }}: 12:00</li>
+                    <li><i class="fas fa-home"></i> {{ t.family_only }}</li>
+                    <li><i class="fas fa-phone"></i> {{ t.contact_phone }}: +998 90 096-50-55</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// Переключение категорий цен
+document.addEventListener('DOMContentLoaded', function() {
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    const priceTables = document.querySelectorAll('.price-table-container');
+
+    categoryBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Убираем активный класс у всех кнопок
+            categoryBtns.forEach(b => b.classList.remove('active'));
+            // Добавляем активный класс текущей кнопке
+            this.classList.add('active');
+
+            // Скрываем все таблицы
+            priceTables.forEach(table => table.style.display = 'none');
+            // Показываем нужную таблицу
+            const category = this.dataset.category;
+            document.getElementById(category).style.display = 'block';
+        });
+    });
+});
+</script>
+{% endblock %}
