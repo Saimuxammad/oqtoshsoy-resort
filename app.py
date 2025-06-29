@@ -259,17 +259,15 @@ def submit_booking():
         room_type = rooms_data.get(data['room_type'], {})
         room_name = room_type.get(lang, data['room_type'])
 
-        message = f"""
-🏨 Новое бронирование | Yangi bron
+        message = f"""🏨 Новое бронирование | Yangi bron
 
-👤 Имя | Ism: {data['name']}
-📞 Телефон | Telefon: {data['phone']}
-📅 Заезд | Kirish: {data['check_in']}
-📅 Выезд | Chiqish: {data['check_out']}
-🏠 Номер | Xona: {room_name}
-👥 Гостей | Mehmonlar: {data['guests']}
-💬 Комментарий | Izoh: {data.get('comment', 'Нет | Yo\'q')}
-"""
+        👤 Имя | Ism: {data['name']}
+        📞 Телефон | Telefon: {data['phone']}
+        📅 Заезд | Kirish: {data['check_in']}
+        📅 Выезд | Chiqish: {data['check_out']}
+        🏠 Номер | Xona: {room_name}
+        👥 Гостей | Mehmonlar: {data['guests']}
+        💬 Комментарий | Izoh: {data.get('comment', 'Нет | Yoq')}"""
 
         # Отправляем в Telegram
         telegram_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
