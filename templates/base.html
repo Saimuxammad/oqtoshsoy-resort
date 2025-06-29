@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Oqtoshsoy Resort{% endblock %}</title>
+
+    <!-- Шрифты -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="/" class="logo">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Oqtoshsoy">
+                </a>
+
+                <div class="nav-menu" id="navMenu">
+                    <a href="/" class="nav-link {% if request.endpoint == 'index' %}active{% endif %}">{{ t.nav_home }}</a>
+                    <a href="/rooms" class="nav-link {% if request.endpoint == 'rooms' %}active{% endif %}">{{ t.nav_rooms }}</a>
+                    <a href="/services" class="nav-link {% if request.endpoint == 'services' %}active{% endif %}">{{ t.nav_services }}</a>
+                    <a href="/gallery" class="nav-link {% if request.endpoint == 'gallery' %}active{% endif %}">{{ t.nav_gallery }}</a>
+                    <a href="/booking" class="nav-link {% if request.endpoint == 'booking' %}active{% endif %}">{{ t.nav_booking }}</a>
+                    <a href="/contacts" class="nav-link {% if request.endpoint == 'contacts' %}active{% endif %}">{{ t.nav_contacts }}</a>
+                </div>
+
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <a href="/set_language/uz" class="lang-btn {% if lang == 'uz' %}active{% endif %}">UZ</a>
+                        <span class="lang-divider">|</span>
+                        <a href="/set_language/ru" class="lang-btn {% if lang == 'ru' %}active{% endif %}">RU</a>
+                    </div>
+
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Основной контент -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Oqtoshsoy Resort</h3>
+                    <p>{{ t.family_only }}</p>
+                    <div class="social-links">
+                        <a href="https://t.me/oqtoshsoy" target="_blank"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>{{ t.nav_contacts }}</h4>
+                    <p><i class="fas fa-phone"></i> +998 90 096-50-55</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Tashkent, Uzbekistan</p>
+                    <p><i class="fas fa-clock"></i> {{ t.checkin }}: 14:00 | {{ t.checkout }}: 12:00</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>{{ t.nav_rooms }}</h4>
+                    <ul>
+                        <li><a href="/rooms#standard">Standard</a></li>
+                        <li><a href="/rooms#lux">Lux</a></li>
+                        <li><a href="/rooms#vip">VIP</a></li>
+                        <li><a href="/rooms#apartment">Apartment</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>{{ t.nav_services }}</h4>
+                    <ul>
+                        <li>{{ t.pool }}</li>
+                        <li>{{ t.tennis }}</li>
+                        <li>{{ t.billiard }}</li>
+                        <li>{{ t.salt_room }}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Oqtoshsoy Resort. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

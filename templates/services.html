@@ -1,0 +1,362 @@
+{% extends "base.html" %}
+
+{% block title %}{{ t.services_title }} - Oqtoshsoy Resort{% endblock %}
+
+{% block content %}
+<!-- Заголовок страницы -->
+<section class="page-header">
+    <div class="container">
+        <h1 class="page-title">{{ t.services_title }}</h1>
+        <nav class="breadcrumb">
+            <a href="/">{{ t.nav_home }}</a>
+            <span>/</span>
+            <span>{{ t.nav_services }}</span>
+        </nav>
+    </div>
+</section>
+
+<!-- Услуги -->
+<section class="services-section section-padding">
+    <div class="container">
+        <!-- Включенные услуги -->
+        <div class="services-block">
+            <h2 class="services-block-title">{{ t.included_services }}</h2>
+            <p class="services-subtitle">{{ lang == 'uz' ? 'Har qanday narx bilan kiradigan xizmatlar' : 'Услуги, включенные в любую стоимость' }}</p>
+
+            <div class="services-main-grid">
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                    <h3>{{ t.breakfast }}</h3>
+                    <p>{{ lang == 'uz' ? 'Ertalab 7:00 dan 10:00 gacha' : 'С 7:00 до 10:00 утра' }}</p>
+                </div>
+
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-swimming-pool"></i>
+                    </div>
+                    <h3>{{ t.pool }}</h3>
+                    <p>{{ lang == 'uz' ? 'Yopiq va ochiq basseynlar' : 'Крытые и открытые бассейны' }}</p>
+                </div>
+
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-table-tennis"></i>
+                    </div>
+                    <h3>{{ t.tennis }}</h3>
+                    <p>{{ lang == 'uz' ? 'Sport zalida' : 'В спортивном зале' }}</p>
+                </div>
+
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3>{{ t.playground }}</h3>
+                    <p>{{ lang == 'uz' ? '1 soat bepul' : '1 час бесплатно' }}</p>
+                </div>
+
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-parking"></i>
+                    </div>
+                    <h3>{{ t.parking }}</h3>
+                    <p>{{ lang == 'uz' ? 'Xavfsiz avtomobil to\'xtash joyi' : 'Безопасная парковка' }}</p>
+                </div>
+
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3>{{ t.wifi }}</h3>
+                    <p>{{ lang == 'uz' ? 'Butun hududda tezkor internet' : 'Высокоскоростной интернет на всей территории' }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Услуги с питанием -->
+        <div class="services-block">
+            <h2 class="services-block-title">{{ lang == 'uz' ? 'Ovqat bilan kiradigan xizmatlar' : 'Услуги, включенные с питанием' }}</h2>
+            <p class="services-subtitle">{{ lang == 'uz' ? 'Ovqat tarifini tanlaganingizda qo\'shimcha' : 'Дополнительно при выборе тарифа с питанием' }}</p>
+
+            <div class="services-meal-grid">
+                <div class="meal-service animate-on-scroll">
+                    <i class="fas fa-utensils"></i>
+                    <div>
+                        <h4>{{ t.lunch }}</h4>
+                        <p>{{ lang == 'uz' ? '12:00 - 15:00' : '12:00 - 15:00' }}</p>
+                    </div>
+                </div>
+
+                <div class="meal-service animate-on-scroll">
+                    <i class="fas fa-concierge-bell"></i>
+                    <div>
+                        <h4>{{ t.dinner }}</h4>
+                        <p>{{ lang == 'uz' ? '18:00 - 22:00' : '18:00 - 22:00' }}</p>
+                    </div>
+                </div>
+
+                <div class="meal-service animate-on-scroll">
+                    <i class="fas fa-gamepad"></i>
+                    <div>
+                        <h4>{{ t.billiard }}</h4>
+                        <p>{{ lang == 'uz' ? '1 soat bepul o\'yin' : '1 час бесплатной игры' }}</p>
+                    </div>
+                </div>
+
+                <div class="meal-service animate-on-scroll">
+                    <i class="fas fa-spa"></i>
+                    <div>
+                        <h4>{{ t.salt_room }}</h4>
+                        <p>{{ lang == 'uz' ? '1 soat seans' : '1 час сеанса' }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Дополнительные услуги -->
+        <div class="services-block">
+            <h2 class="services-block-title">{{ t.additional_services }}</h2>
+            <p class="services-subtitle">{{ lang == 'uz' ? 'Qo\'shimcha to\'lov evaziga' : 'За дополнительную плату' }}</p>
+
+            <div class="additional-services-grid">
+                <div class="additional-service-item animate-on-scroll">
+                    <div class="service-header">
+                        <i class="fas fa-umbrella-beach"></i>
+                        <h4>{{ t.gazebo_small }}</h4>
+                    </div>
+                    <div class="service-price">
+                        <span>900 000 - 1 100 000</span>
+                        <small>{{ lang == 'uz' ? "so'm/kun" : "сум/день" }}</small>
+                    </div>
+                    <p>{{ lang == 'uz' ? '9:00 dan 18:00 gacha' : 'С 9:00 до 18:00' }}</p>
+                </div>
+
+                <div class="additional-service-item animate-on-scroll">
+                    <div class="service-header">
+                        <i class="fas fa-home"></i>
+                        <h4>{{ t.gazebo_large }}</h4>
+                    </div>
+                    <div class="service-price">
+                        <span>1 500 000 - 1 800 000</span>
+                        <small>{{ lang == 'uz' ? "so'm/kun" : "сум/день" }}</small>
+                    </div>
+                    <p>{{ lang == 'uz' ? '9:00 dan 18:00 gacha' : 'С 9:00 до 18:00' }}</p>
+                </div>
+
+                <div class="additional-service-item animate-on-scroll">
+                    <div class="service-header">
+                        <i class="fas fa-bed"></i>
+                        <h4>{{ t.extra_mattress }}</h4>
+                    </div>
+                    <div class="service-price">
+                        <span>250 000</span>
+                        <small>{{ lang == 'uz' ? "so'm" : "сум" }}</small>
+                    </div>
+                    <p>{{ lang == 'uz' ? 'Qo\'shimcha mehmon uchun' : 'Для дополнительного гостя' }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA блок -->
+        <div class="services-cta">
+            <h3>{{ lang == 'uz' ? 'Savollaringiz bormi?' : 'Есть вопросы?' }}</h3>
+            <p>{{ lang == 'uz' ? 'Biz bilan bog\'laning va barcha savollaringizga javob beramiz' : 'Свяжитесь с нами и мы ответим на все ваши вопросы' }}</p>
+            <div class="cta-buttons">
+                <a href="/booking" class="btn btn-primary">{{ t.reserve_now }}</a>
+                <a href="/contacts" class="btn btn-outline">{{ t.nav_contacts }}</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Стили для страницы услуг -->
+<style>
+.services-block {
+    margin-bottom: 4rem;
+}
+
+.services-block-title {
+    font-size: 2rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.services-subtitle {
+    text-align: center;
+    color: var(--dark-gray);
+    margin-bottom: 2rem;
+}
+
+.services-main-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.service-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--light-gray);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.service-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.service-card p {
+    color: var(--dark-gray);
+}
+
+.services-meal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.meal-service {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--light-gray);
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+.meal-service:hover {
+    background: var(--white);
+    box-shadow: var(--shadow);
+}
+
+.meal-service i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.meal-service h4 {
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+.additional-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.additional-service-item {
+    background: var(--white);
+    border: 2px solid var(--medium-gray);
+    padding: 2rem;
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+.additional-service-item:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow);
+}
+
+.service-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.service-header i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.service-header h4 {
+    color: var(--primary-color);
+}
+
+.service-price {
+    margin-bottom: 1rem;
+}
+
+.service-price span {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.service-price small {
+    color: var(--dark-gray);
+    margin-left: 0.5rem;
+}
+
+.additional-service-item p {
+    color: var(--dark-gray);
+}
+
+.services-cta {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 3rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.services-cta h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.services-cta p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .services-main-grid,
+    .additional-services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .cta-buttons .btn {
+        width: 100%;
+    }
+}
+</style>
+{% endblock %}
