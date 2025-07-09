@@ -30,7 +30,10 @@
 
             <!-- Будние дни -->
             <div class="price-section">
-                <h4 class="price-period">{{ t.weekdays }} ({{ lang == 'uz' ? 'Dushanba - Payshanba' : 'Понедельник - Четверг' }})</h4>
+                <h4 class="price-period">
+                    {{ t.weekdays }}
+                    ({% if lang == 'uz' %}Dushanba - Payshanba{% else %}Понедельник - Четверг{% endif %})
+                </h4>
                 <div class="rooms-grid">
                     {% for room_key, room in rooms.items() %}
                     <div class="room-card animate-on-scroll">
@@ -40,7 +43,9 @@
                         </div>
                         <div class="room-price">
                             <span class="price">{{ "{:,}".format(room.weekday_no_meal).replace(',', ' ') }}</span>
-                            <span class="currency">{{ lang == 'uz' ? "so'm" : "сум" }}</span>
+                            <span class="currency">
+                                {% if lang == 'uz' %}so'm{% else %}сум{% endif %}
+                            </span>
                         </div>
                         <a href="/booking" class="btn btn-small btn-outline">{{ t.reserve_now }}</a>
                     </div>
@@ -50,7 +55,10 @@
 
             <!-- Выходные дни -->
             <div class="price-section">
-                <h4 class="price-period">{{ t.weekends }} ({{ lang == 'uz' ? 'Juma - Yakshanba' : 'Пятница - Воскресенье' }})</h4>
+                <h4 class="price-period">
+                    {{ t.weekends }}
+                    ({% if lang == 'uz' %}Juma - Yakshanba{% else %}Пятница - Воскресенье{% endif %})
+                </h4>
                 <div class="rooms-grid">
                     {% for room_key, room in rooms.items() %}
                     <div class="room-card animate-on-scroll">
@@ -60,7 +68,9 @@
                         </div>
                         <div class="room-price">
                             <span class="price">{{ "{:,}".format(room.weekend_no_meal).replace(',', ' ') }}</span>
-                            <span class="currency">{{ lang == 'uz' ? "so'm" : "сум" }}</span>
+                            <span class="currency">
+                                {% if lang == 'uz' %}so'm{% else %}сум{% endif %}
+                            </span>
                         </div>
                         <a href="/booking" class="btn btn-small btn-outline">{{ t.reserve_now }}</a>
                     </div>
@@ -74,7 +84,11 @@
             <h3 class="price-subtitle">{{ t.with_meals }}</h3>
             <p class="meal-info">
                 <i class="fas fa-utensils"></i>
-                {{ lang == 'uz' ? 'Nonushta, tushlik va kechki ovqat kiradi' : 'Включено: завтрак, обед и ужин' }}
+                {% if lang == 'uz' %}
+                    Nonushta, tushlik va kechki ovqat kiradi
+                {% else %}
+                    Включено: завтрак, обед и ужин
+                {% endif %}
             </p>
 
             <div class="rooms-grid">
@@ -86,7 +100,9 @@
                     </div>
                     <div class="room-price">
                         <span class="price">{{ "{:,}".format(room.with_meal).replace(',', ' ') }}</span>
-                        <span class="currency">{{ lang == 'uz' ? "so'm" : "сум" }}</span>
+                        <span class="currency">
+                            {% if lang == 'uz' %}so'm{% else %}сум{% endif %}
+                        </span>
                     </div>
                     <div class="meal-included">
                         <span><i class="fas fa-check"></i> {{ t.breakfast }}</span>
@@ -107,7 +123,11 @@
                     <li><i class="fas fa-check-circle"></i> {{ t.breakfast }}</li>
                     <li><i class="fas fa-check-circle"></i> {{ t.pool }}</li>
                     <li><i class="fas fa-check-circle"></i> {{ t.tennis }}</li>
-                    <li><i class="fas fa-check-circle"></i> {{ t.playground }} (1 {{ lang == 'uz' ? 'soat' : 'час' }})</li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        {{ t.playground }}
+                        (1 {% if lang == 'uz' %}soat{% else %}час{% endif %})
+                    </li>
                     <li><i class="fas fa-check-circle"></i> {{ t.parking }}</li>
                     <li><i class="fas fa-check-circle"></i> {{ t.wifi }}</li>
                 </ul>
@@ -116,8 +136,16 @@
             <div class="info-card">
                 <h4>{{ t.additional_services }}</h4>
                 <ul class="services-list">
-                    <li><i class="fas fa-info-circle"></i> {{ t.billiard }} (1 {{ lang == 'uz' ? 'soat' : 'час' }})</li>
-                    <li><i class="fas fa-info-circle"></i> {{ t.salt_room }} (1 {{ lang == 'uz' ? 'soat' : 'час' }})</li>
+                    <li>
+                        <i class="fas fa-info-circle"></i>
+                        {{ t.billiard }}
+                        (1 {% if lang == 'uz' %}soat{% else %}час{% endif %})
+                    </li>
+                    <li>
+                        <i class="fas fa-info-circle"></i>
+                        {{ t.salt_room }}
+                        (1 {% if lang == 'uz' %}soat{% else %}час{% endif %})
+                    </li>
                     <li><i class="fas fa-info-circle"></i> {{ t.gazebo_small }}: 900 000 - 1 100 000</li>
                     <li><i class="fas fa-info-circle"></i> {{ t.gazebo_large }}: 1 500 000 - 1 800 000</li>
                     <li><i class="fas fa-info-circle"></i> {{ t.extra_mattress }}: 250 000</li>
@@ -125,7 +153,13 @@
             </div>
 
             <div class="info-card">
-                <h4>{{ lang == 'uz' ? 'Muhim ma\'lumotlar' : 'Важная информация' }}</h4>
+                <h4>
+                    {% if lang == 'uz' %}
+                        Muhim ma'lumotlar
+                    {% else %}
+                        Важная информация
+                    {% endif %}
+                </h4>
                 <ul class="services-list">
                     <li><i class="fas fa-clock"></i> {{ t.checkin }}: 14:00</li>
                     <li><i class="fas fa-clock"></i> {{ t.checkout }}: 12:00</li>

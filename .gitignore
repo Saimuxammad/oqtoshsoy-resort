@@ -7,33 +7,20 @@ __pycache__/
 env/
 venv/
 ENV/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
+.venv
 
-# PyCharm
-.idea/
-*.iml
-*.iws
-
-# VS Code
-.vscode/
+# Flask
+instance/
+.webassets-cache
 
 # Environment variables
 .env
-.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
 
 # OS
 .DS_Store
@@ -44,15 +31,9 @@ Thumbs.db
 
 # Database
 *.db
+*.sqlite
 *.sqlite3
 
-# Static files (если генерируются)
-/static/collected/
-
-# Media files (загруженные пользователями)
-/media/
-
-# Временные файлы
-*.swp
-*.swo
-*~
+# Static files (если используете для тестов)
+/static/images/test/
+/static/videos/test/

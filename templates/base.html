@@ -17,12 +17,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
+
+    <!-- Навигация (уже существует) -->
+    <nav class="navbar">
+        <!-- ... остальной код навигации ... -->
+    </nav>
     <!-- Навигация -->
     <nav class="navbar">
         <div class="container">
             <div class="nav-wrapper">
                 <a href="/" class="logo">
-                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Oqtoshsoy">
+                    <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Oqtoshsoy">
                 </a>
 
                 <div class="nav-menu" id="navMenu">
@@ -49,6 +54,13 @@
                 </div>
             </div>
         </div>
+<!-- Минималистичные горы в навбаре -->
+<div class="navbar-mountains">
+    <svg viewBox="0 0 1440 20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,20 L144,8 L288,14 L432,5 L576,12 L720,3 L864,10 L1008,6 L1152,15 L1296,7 L1440,18 L1440,20 Z"
+              fill="currentColor"/>
+    </svg>
+</div>
     </nav>
 
     <!-- Основной контент -->
@@ -64,9 +76,9 @@
                     <h3>Oqtoshsoy Resort</h3>
                     <p>{{ t.family_only }}</p>
                     <div class="social-links">
-                        <a href="https://t.me/oqtoshsoy" target="_blank"><i class="fab fa-telegram"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="https://t.me/Oqtosh_Soy" target="_blank"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/oqtoshsoy.uz?igsh=MW42cGlsODV2cDh1Nw&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/share/1Ja3QwwjQL/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i></a>
                     </div>
                 </div>
 
@@ -99,8 +111,17 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2024 Oqtoshsoy Resort. All rights reserved.</p>
-            </div>
+    <p>© 2025 Oqtoshsoy Resort. All rights reserved.</p>
+</div>
+
+<!-- ДОБАВЬТЕ ПОДПИСЬ СЮДА (строка 114) -->
+<div class="developer-signature mountain-style">
+    <svg class="signature-mountain" viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20,30 L40,5 L60,30 M40,5 L35,12 L45,12 Z" fill="none" stroke="currentColor" stroke-width="1"/>
+    </svg>
+    <p>Designed & Developed by <strong>Saidmuxammad Xamitov</strong></p>
+    <span class="signature-year">2025</span>
+</div>
         </div>
     </footer>
 

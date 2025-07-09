@@ -44,7 +44,9 @@
                     <div class="form-group">
                         <label for="room_type">{{ t.booking_room_type }} <span class="required">*</span></label>
                         <select id="room_type" name="room_type" required>
-                            <option value="">{{ lang == 'uz' ? 'Tanlang' : 'Выберите' }}</option>
+                            <option value="">
+                                {% if lang == 'uz' %}Tanlang{% else %}Выберите{% endif %}
+                            </option>
                             {% for room_key, room in rooms.items() %}
                             <option value="{{ room_key }}">{{ room[lang] }}</option>
                             {% endfor %}
@@ -54,7 +56,9 @@
                     <div class="form-group">
                         <label for="guests">{{ t.booking_guests }} <span class="required">*</span></label>
                         <select id="guests" name="guests" required>
-                            <option value="">{{ lang == 'uz' ? 'Tanlang' : 'Выберите' }}</option>
+                            <option value="">
+                                {% if lang == 'uz' %}Tanlang{% else %}Выберите{% endif %}
+                            </option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -69,7 +73,8 @@
 
                 <div class="form-group full-width">
                     <label for="comment">{{ t.booking_comment }}</label>
-                    <textarea id="comment" name="comment" rows="4" placeholder="{{ lang == 'uz' ? 'Qo\'shimcha istaklar yoki savollar' : 'Дополнительные пожелания или вопросы' }}"></textarea>
+                    <textarea id="comment" name="comment" rows="4"
+                        placeholder="{% if lang == 'uz' %}Qo'shimcha istaklar yoki savollar{% else %}Дополнительные пожелания или вопросы{% endif %}"></textarea>
                 </div>
 
                 <div class="form-actions">
@@ -81,19 +86,35 @@
 
             <!-- Информация о бронировании -->
             <div class="booking-info">
-                <h3>{{ lang == 'uz' ? 'Muhim ma\'lumot' : 'Важная информация' }}</h3>
+                <h3>
+                    {% if lang == 'uz' %}Muhim ma'lumot{% else %}Важная информация{% endif %}
+                </h3>
                 <ul>
                     <li><i class="fas fa-check"></i> {{ t.checkin }}: 14:00</li>
                     <li><i class="fas fa-check"></i> {{ t.checkout }}: 12:00</li>
                     <li><i class="fas fa-check"></i> {{ t.family_only }}</li>
-                    <li><i class="fas fa-check"></i> {{ lang == 'uz' ? 'Bepul bekor qilish 24 soat oldin' : 'Бесплатная отмена за 24 часа' }}</li>
-                    <li><i class="fas fa-check"></i> {{ lang == 'uz' ? 'Biz sizga 1 soat ichida javob beramiz' : 'Мы ответим вам в течение 1 часа' }}</li>
+                    <li>
+                        <i class="fas fa-check"></i>
+                        {% if lang == 'uz' %}
+                            Bepul bekor qilish 24 soat oldin
+                        {% else %}
+                            Бесплатная отмена за 24 часа
+                        {% endif %}
+                    </li>
+                    <li>
+                        <i class="fas fa-check"></i>
+                        {% if lang == 'uz' %}
+                            Biz sizga 1 soat ichida javob beramiz
+                        {% else %}
+                            Мы ответим вам в течение 1 часа
+                        {% endif %}
+                    </li>
                 </ul>
 
                 <div class="contact-box">
                     <h4>{{ t.contact_title }}</h4>
                     <p><i class="fas fa-phone"></i> +998 90 096-50-55</p>
-                    <a href="https://t.me/oqtoshsoy" class="btn btn-outline btn-small" target="_blank">
+                    <a href="https://t.me/Oqtosh_Soy" class="btn btn-outline btn-small" target="_blank">
                         <i class="fab fa-telegram"></i> Telegram
                     </a>
                 </div>

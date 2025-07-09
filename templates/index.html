@@ -16,10 +16,61 @@
         <a href="/booking" class="btn btn-primary btn-large animate-fade-in-delay-2">{{ t.hero_cta }}</a>
     </div>
 
+    <!-- Добавьте в templates/index.html после hero-content и перед hero-scroll-indicator -->
+
+<!-- Элегантный горный узор -->
+<div class="hero-mountain-pattern">
+    <svg viewBox="0 0 1440 300" xmlns="http://www.w3.org/2000/svg">
+        <!-- Дальний слой гор -->
+        <g opacity="0.3">
+            <path d="M0,300 L120,180 L240,220 L360,160 L480,200 L600,140 L720,190 L840,150 L960,210 L1080,170 L1200,230 L1320,180 L1440,240 L1440,300 Z"
+                  fill="rgba(255,255,255,0.2)"/>
+            <!-- Снежные вершины -->
+            <path d="M120,180 L110,195 L130,195 Z" fill="white" opacity="0.6"/>
+            <path d="M360,160 L350,175 L370,175 Z" fill="white" opacity="0.6"/>
+            <path d="M600,140 L590,155 L610,155 Z" fill="white" opacity="0.6"/>
+            <path d="M840,150 L830,165 L850,165 Z" fill="white" opacity="0.6"/>
+        </g>
+
+        <!-- Средний слой гор -->
+        <g opacity="0.5">
+            <path d="M0,300 L180,200 L360,250 L540,180 L720,240 L900,190 L1080,260 L1260,210 L1440,270 L1440,300 Z"
+                  fill="rgba(255,255,255,0.3)"/>
+            <!-- Деревья -->
+            <g stroke="rgba(255,255,255,0.4)" stroke-width="1" fill="none">
+                <path d="M100,280 L100,270 M95,275 L100,270 L105,275"/>
+                <path d="M150,285 L150,275 M145,280 L150,275 L155,280"/>
+                <path d="M200,290 L200,280 M195,285 L200,280 L205,285"/>
+                <path d="M300,275 L300,265 M295,270 L300,265 L305,270"/>
+                <path d="M400,280 L400,270 M395,275 L400,270 L405,275"/>
+            </g>
+        </g>
+
+        <!-- Передний слой гор -->
+        <g opacity="0.8">
+            <path d="M0,300 L150,240 L300,280 L450,220 L600,270 L750,230 L900,290 L1050,250 L1200,285 L1350,255 L1440,295 L1440,300 Z"
+                  fill="rgba(255,255,255,0.5)"/>
+        </g>
+
+        <!-- Декоративные элементы -->
+        <g opacity="0.6">
+            <!-- Птицы -->
+            <path d="M200,150 Q205,145 210,150" stroke="white" stroke-width="1.5" fill="none"/>
+            <path d="M220,160 Q225,155 230,160" stroke="white" stroke-width="1.5" fill="none"/>
+
+            <!-- Солнце/Луна -->
+            <circle cx="1300" cy="100" r="30" fill="rgba(255,255,255,0.3)"/>
+        </g>
+    </svg>
+</div>
+
     <div class="hero-scroll-indicator">
         <i class="fas fa-chevron-down"></i>
     </div>
 </section>
+
+<!-- О курорте -->
+<!-- Найдите секцию "О курорте" в index.html и замените на: -->
 
 <!-- О курорте -->
 <section class="about section-padding">
@@ -38,7 +89,7 @@
                         <i class="fas fa-bed"></i>
                     </div>
                     <h3>{{ t.features_comfort }}</h3>
-                    <p>Standard, Lux, VIP, Apartment</p>
+                    <p>30 {% if lang == 'uz' %}ta zamonaviy xona{% else %}современных номеров{% endif %}</p>
                 </div>
 
                 <div class="feature-card animate-on-scroll">
@@ -46,7 +97,15 @@
                         <i class="fas fa-mountain"></i>
                     </div>
                     <h3>{{ t.features_nature }}</h3>
-                    <p>{{ t.family_only }}</p>
+                    <p>{% if lang == 'uz' %}2 gektar hudud{% else %}2 гектара территории{% endif %}</p>
+                </div>
+
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3>{{ t.features_health }}</h3>
+                    <p>{{ t.healing_air }}</p>
                 </div>
 
                 <div class="feature-card animate-on-scroll">
@@ -58,8 +117,69 @@
                 </div>
             </div>
         </div>
+
+        <!-- Уникальные преимущества -->
+        <div class="unique-features">
+    <div class="unique-item">
+        <i class="fas fa-wind"></i>
+        <h4>{{ t.healing_air }}</h4>
+        <p>{{ t.healing_text }}</p>
+    </div>
+
+    <div class="unique-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <h4>{{ t.distance_capital }}</h4>
+        <p>{% if lang == 'uz' %}Qulay transport imkoniyati{% else %}Удобная транспортная доступность{% endif %}</p>
+    </div>
+
+    <div class="unique-item">
+        <i class="fas fa-leaf"></i>
+        <h4>{{ t.eco_zone }}</h4>
+        <p>{% if lang == 'uz' %}Tabiat qo'riqxonasi hududida{% else %}В природоохранной зоне{% endif %}</p>
+    </div>
+
+    <div class="unique-item">
+        <i class="fas fa-calendar-alt"></i>
+        <h4>{{ t.year_round }}</h4>
+        <p>{% if lang == 'uz' %}4 fasl dam olish{% else %}Отдых в любой сезон{% endif %}</p>
+    </div>
+</div>
     </div>
 </section>
+
+<!-- Добавьте стили для уникальных преимуществ -->
+<style>
+.unique-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+    padding: 3rem;
+    background: var(--light-gray);
+    border-radius: 15px;
+}
+
+.unique-item {
+    text-align: center;
+}
+
+.unique-item i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.unique-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.unique-item p {
+    color: var(--dark-gray);
+    font-size: 0.95rem;
+}
+</style>
 
 <!-- Услуги превью -->
 <section class="services-preview section-padding bg-light">
@@ -101,7 +221,150 @@
         </div>
     </div>
 </section>
+<!-- 1. Исправленная секция активного отдыха (добавьте в index.html после секции услуг) -->
 
+<!-- Активный отдых -->
+<section class="activities-section section-padding bg-light">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">
+                {% if lang == 'uz' %}Faol dam olish{% else %}Активный отдых{% endif %}
+            </h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">
+                {% if lang == 'uz' %}
+                    Tog'larda qiziqarli vaqt o'tkazish
+                {% else %}
+                    Интересное времяпровождение в горах
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="activities-grid">
+            <div class="activity-card animate-on-scroll">
+                <div class="activity-icon">
+                    <i class="fas fa-hiking"></i>
+                </div>
+                <h3>{% if lang == 'uz' %}Tog' yurishi{% else %}Прогулки по горам{% endif %}</h3>
+                <p>{% if lang == 'uz' %}Professional gidlar bilan{% else %}С профессиональными гидами{% endif %}</p>
+            </div>
+
+            <div class="activity-card animate-on-scroll">
+                <div class="activity-icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <h3>{% if lang == 'uz' %}Olov boshida kecha{% else %}Вечер у костра{% endif %}</h3>
+                <p>{% if lang == 'uz' %}An'anaviy milliy taomlar{% else %}Традиционные национальные блюда{% endif %}</p>
+            </div>
+
+            <div class="activity-card animate-on-scroll">
+                <div class="activity-icon">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <h3>{% if lang == 'uz' %}Foto-zonalar{% else %}Фото-зоны{% endif %}</h3>
+                <p>{% if lang == 'uz' %}Go'zal manzaralar{% else %}Красивые виды{% endif %}</p>
+            </div>
+
+            <div class="activity-card animate-on-scroll">
+                <div class="activity-icon">
+                    <i class="fas fa-fish"></i>
+                </div>
+                <h3>{% if lang == 'uz' %}Baliq ovlash{% else %}Рыбалка{% endif %}</h3>
+                <p>{% if lang == 'uz' %}Tog' daryosida{% else %}В горной реке{% endif %}</p>
+            </div>
+
+            <div class="activity-card animate-on-scroll">
+                <div class="activity-icon">
+                    <i class="fas fa-horse"></i>
+                </div>
+                <h3>{% if lang == 'uz' %}Ot minish{% else %}Конные прогулки{% endif %}</h3>
+                <p>{% if lang == 'uz' %}Tog' yo'llarida{% else %}По горным тропам{% endif %}</p>
+            </div>
+
+            <div class="activity-card animate-on-scroll">
+                <div class="activity-icon">
+                    <i class="fas fa-volleyball-ball"></i>
+                </div>
+                <h3>{% if lang == 'uz' %}Sport o'yinlari{% else %}Спортивные игры{% endif %}</h3>
+                <p>{% if lang == 'uz' %}Voleybol, futbol{% else %}Волейбол, футбол{% endif %}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 2. Специальные предложения (обновленная версия) -->
+<!-- Временно скрыто до осени
+<section class="special-offers section-padding">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">
+                {% if lang == 'uz' %}Maxsus takliflar{% else %}Специальные предложения{% endif %}
+            </h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="offers-grid">
+            Новинка
+            <div class="offer-card animate-on-scroll">
+                <div class="offer-badge">{% if lang == 'uz' %}Yangilik{% else %}Новинка{% endif %}</div>
+                <h3>{% if lang == 'uz' %}Hafta oxiri paketi{% else %}Пакет выходного дня{% endif %}</h3>
+                <ul class="offer-features">
+                    <li><i class="fas fa-check"></i> {% if lang == 'uz' %}2 kun uchun{% else %}Проживание 2 дня{% endif %}</li>
+                    <li><i class="fas fa-check"></i> {% if lang == 'uz' %}3 mahal ovqat{% else %}3-разовое питание{% endif %}</li>
+                    <li><i class="fas fa-check"></i> {% if lang == 'uz' %}Basseyn va sauna{% else %}Бассейн и сауна{% endif %}</li>
+                    <li><i class="fas fa-check"></i> {% if lang == 'uz' %}Bepul Wi-Fi{% else %}Бесплатный Wi-Fi{% endif %}</li>
+                </ul>
+                <div class="offer-price">
+                    <span class="old-price">2 500 000</span>
+                    <span class="new-price">1 990 000</span>
+                    <span class="currency">{% if lang == 'uz' %}so'm{% else %}сум{% endif %}</span>
+                </div>
+                <a href="/booking" class="btn btn-primary btn-block">
+                    {% if lang == 'uz' %}Batafsil{% else %}Подробнее{% endif %}
+                </a>
+            </div>
+
+             Популярное
+            <div class="offer-card featured animate-on-scroll">
+                <div class="offer-badge popular">{% if lang == 'uz' %}Mashhur{% else %}Популярное{% endif %}</div>
+                <h3>{% if lang == 'uz' %}Oilaviy paket{% else %}Семейный пакет{% endif %}</h3>
+                <ul class="offer-features">
+                    <li><i class="fas fa-check"></i> {% if lang == 'uz' %}Katta oilaviy xona{% else %}Большой семейный номер{% endif %}</li>
+                    <li><i class="fas fa-check"></i> {% if lang == 'uz' %}To'liq pansion{% else %}Полное питание{% endif %}</li>
+                    <li><i class="fas fa-check"></i> {% if lang == 'uz' %}Bolalar maydonchasi{% else %}Детская площадка{% endif %}</li>
+                    <li><i class="fas fa-check"></i> {% if lang == 'uz' %}Bepul parking{% else %}Бесплатная парковка{% endif %}</li>
+                </ul>
+                <div class="offer-price">
+                    <span class="price-label">{% if lang == 'uz' %}kunlik{% else %}в день{% endif %}</span>
+                    <span class="new-price">3 500 000</span>
+                    <span class="currency">{% if lang == 'uz' %}so'm{% else %}сум{% endif %}</span>
+                </div>
+                <a href="/booking" class="btn btn-primary btn-block">
+                    {% if lang == 'uz' %}Batafsil{% else %}Подробнее{% endif %}
+                </a>
+            </div>
+
+             Для групп
+            <div class="offer-card animate-on-scroll">
+                <div class="offer-badge">{% if lang == 'uz' %}Guruhlar uchun{% else %}Для групп{% endif %}</div>
+                <h3>{% if lang == 'uz' %}Korporativ dam olish{% else %}Корпоративный отдых{% endif %}</h3>
+                <ul class="offer-features">
+                    <li><i class="fas fa-check"></i> {% if lang == 'uz' %}10 kishidan{% else %}От 10 человек{% endif %}</li>
+                    <li><i class="fas fa-check"></i> {% if lang == 'uz' %}Konferens-zal{% else %}Конференц-зал{% endif %}</li>
+                    <li><i class="fas fa-check"></i> {% if lang == 'uz' %}Guruh uchun chegirma{% else %}Скидка для группы{% endif %}</li>
+                    <li><i class="fas fa-check"></i> {% if lang == 'uz' %}Maxsus menyu{% else %}Специальное меню{% endif %}</li>
+                </ul>
+                <div class="offer-price">
+                    <span class="discount">-20%</span>
+                    <span class="price-label">{% if lang == 'uz' %}chegirma{% else %}скидка{% endif %}</span>
+                </div>
+                <a href="/booking" class="btn btn-primary btn-block">
+                    {% if lang == 'uz' %}Batafsil{% else %}Подробнее{% endif %}
+                </a>
+            </div>
+        </div>
+    </div>
+</section>-->
 <!-- Галерея превью -->
 <section class="gallery-preview section-padding">
     <div class="container">
@@ -111,26 +374,92 @@
         </div>
 
         <div class="gallery-grid">
-            <div class="gallery-item animate-on-scroll">
-                <img src="{{ url_for('static', filename='images/gallery/room1.jpg') }}" alt="Room">
+            <!-- Показываем 12 изображений разных категорий -->
+            <!-- Номера -->
+            <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
+                <img src="{{ url_for('static', filename='images/gallery/room43.jpg') }}" alt="Room 1">
                 <div class="gallery-overlay">
                     <i class="fas fa-expand"></i>
                 </div>
             </div>
-            <div class="gallery-item animate-on-scroll">
-                <img src="{{ url_for('static', filename='images/gallery/pool.jpg') }}" alt="Pool">
+
+            <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
+                <img src="{{ url_for('static', filename='images/gallery/room1.jpg') }}" alt="Room 5">
                 <div class="gallery-overlay">
                     <i class="fas fa-expand"></i>
                 </div>
             </div>
-            <div class="gallery-item animate-on-scroll">
-                <img src="{{ url_for('static', filename='images/gallery/nature.jpg') }}" alt="Nature">
+
+            <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
+                <img src="{{ url_for('static', filename='images/gallery/room19.jpg') }}" alt="Room 10">
                 <div class="gallery-overlay">
                     <i class="fas fa-expand"></i>
                 </div>
             </div>
-            <div class="gallery-item animate-on-scroll">
-                <img src="{{ url_for('static', filename='images/gallery/restaurant.jpg') }}" alt="Restaurant">
+
+            <!-- Бассейны -->
+            <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
+                <img src="{{ url_for('static', filename='images/gallery/pool2.jpg') }}" alt="Pool 1">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
+            </div>
+
+            <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
+                <img src="{{ url_for('static', filename='images/gallery/pool9.jpg') }}" alt="Pool 3">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
+            </div>
+
+            <!-- Природа -->
+            <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
+                <img src="{{ url_for('static', filename='images/gallery/nature4.jpg') }}" alt="Nature 1">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
+            </div>
+
+            <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
+                <img src="{{ url_for('static', filename='images/gallery/nature16.jpg') }}" alt="Nature 5">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
+            </div>
+
+            <!-- Ресторан -->
+            <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
+                <img src="{{ url_for('static', filename='images/gallery/restaurant1.jpg') }}" alt="Restaurant 1">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
+            </div>
+
+            <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
+                <img src="{{ url_for('static', filename='images/gallery/restaurant2.jpg') }}" alt="Restaurant 3">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
+            </div>
+
+            <!-- Экстерьер -->
+            <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
+                <img src="{{ url_for('static', filename='images/gallery/exterior1.jpg') }}" alt="Exterior 1">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
+            </div>
+
+            <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
+                <img src="{{ url_for('static', filename='images/gallery/exterior8.jpg') }}" alt="Exterior 3">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
+            </div>
+
+            <!-- Детская площадка -->
+            <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
+                <img src="{{ url_for('static', filename='images/gallery/playground1.jpg') }}" alt="Playground">
                 <div class="gallery-overlay">
                     <i class="fas fa-expand"></i>
                 </div>
@@ -138,11 +467,175 @@
         </div>
 
         <div class="text-center mt-4">
-            <a href="/gallery" class="btn btn-outline">{{ t.gallery_title }}</a>
+            <a href="/gallery" class="btn btn-primary">
+                {% if lang == 'uz' %}
+                    Barcha rasmlarni ko'rish
+                {% else %}
+                    Смотреть все фото
+                {% endif %}
+            </a>
         </div>
     </div>
 </section>
 
+<!-- Дополнительные стили для лучшего отображения -->
+<style>
+.gallery-preview .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.gallery-preview .gallery-item {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.gallery-preview .gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+    .gallery-preview .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-preview .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+<!-- Добавьте эту секцию в index.html перед CTA секцией -->
+
+<!-- Наши преимущества -->
+<section class="advantages-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">
+                {% if lang == 'uz' %}Nima uchun bizni tanlashadi{% else %}Почему выбирают нас{% endif %}
+            </h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="advantages-grid">
+            <div class="advantage-item animate-on-scroll">
+                <div class="advantage-icon">
+                    <i class="fas fa-bed"></i>
+                </div>
+                <div class="advantage-number">30+</div>
+                <h3 class="advantage-title">
+                    {% if lang == 'uz' %}Zamonaviy xonalar{% else %}Современных номеров{% endif %}
+                </h3>
+                <p class="advantage-text">
+                    {% if lang == 'uz' %}Barcha qulayliklar bilan{% else %}Со всеми удобствами{% endif %}
+                </p>
+            </div>
+
+            <div class="advantage-item animate-on-scroll">
+                <div class="advantage-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="advantage-number">500+</div>
+                <h3 class="advantage-title">
+                    {% if lang == 'uz' %}Xursand mijozlar{% else %}Довольных клиентов{% endif %}
+                </h3>
+                <p class="advantage-text">
+                    {% if lang == 'uz' %}Har oyda{% else %}Каждый месяц{% endif %}
+                </p>
+            </div>
+
+            <div class="advantage-item animate-on-scroll">
+                <div class="advantage-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <div class="advantage-number">5★</div>
+                <h3 class="advantage-title">
+                    {% if lang == 'uz' %}Yuqori baho{% else %}Высокая оценка{% endif %}
+                </h3>
+                <p class="advantage-text">
+                    {% if lang == 'uz' %}Mijozlar tomonidan{% else %}От клиентов{% endif %}
+                </p>
+            </div>
+        </div>
+
+        <!-- Дополнительная информация -->
+        <div class="info-cards">
+            <div class="info-card-item animate-on-scroll">
+                <i class="fas fa-mountain"></i>
+                <h4>{% if lang == 'uz' %}1100m balandlik{% else %}1100м высота{% endif %}</h4>
+                <p>{% if lang == 'uz' %}Dengiz sathidan{% else %}Над уровнем моря{% endif %}</p>
+            </div>
+
+            <div class="info-card-item animate-on-scroll">
+                <i class="fas fa-thermometer-half"></i>
+                <h4>{% if lang == 'uz' %}+25°C yozda{% else %}+25°C летом{% endif %}</h4>
+                <p>{% if lang == 'uz' %}Salqin havo{% else %}Прохладный воздух{% endif %}</p>
+            </div>
+
+            <div class="info-card-item animate-on-scroll">
+                <i class="fas fa-tree"></i>
+                <h4>{% if lang == 'uz' %}2 gektar{% else %}2 гектаров{% endif %}</h4>
+                <p>{% if lang == 'uz' %}Yashil hudud{% else %}Зеленая территория{% endif %}</p>
+            </div>
+
+            <div class="info-card-item animate-on-scroll">
+                <i class="fas fa-calendar-check"></i>
+                <h4>{% if lang == 'uz' %}365 kun{% else %}365 дней{% endif %}</h4>
+                <p>{% if lang == 'uz' %}Yil davomida ochiq{% else %}Открыто круглый год{% endif %}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.info-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.info-card-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.info-card-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.info-card-item i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.info-card-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.info-card-item p {
+    color: var(--dark-gray);
+    font-size: 0.9rem;
+}
+
+.advantage-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+</style>
 <!-- CTA секция -->
 <section class="cta-section">
     <div class="container">

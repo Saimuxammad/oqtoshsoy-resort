@@ -21,7 +21,13 @@
         <!-- Включенные услуги -->
         <div class="services-block">
             <h2 class="services-block-title">{{ t.included_services }}</h2>
-            <p class="services-subtitle">{{ lang == 'uz' ? 'Har qanday narx bilan kiradigan xizmatlar' : 'Услуги, включенные в любую стоимость' }}</p>
+            <p class="services-subtitle">
+                {% if lang == 'uz' %}
+                    Har qanday narx bilan kiradigan xizmatlar
+                {% else %}
+                    Услуги, включенные в любую стоимость
+                {% endif %}
+            </p>
 
             <div class="services-main-grid">
                 <div class="service-card animate-on-scroll">
@@ -29,7 +35,13 @@
                         <i class="fas fa-coffee"></i>
                     </div>
                     <h3>{{ t.breakfast }}</h3>
-                    <p>{{ lang == 'uz' ? 'Ertalab 7:00 dan 10:00 gacha' : 'С 7:00 до 10:00 утра' }}</p>
+                    <p>
+                        {% if lang == 'uz' %}
+                            Ertalab 7:00 dan 10:00 gacha
+                        {% else %}
+                            С 7:00 до 10:00 утра
+                        {% endif %}
+                    </p>
                 </div>
 
                 <div class="service-card animate-on-scroll">
@@ -37,7 +49,13 @@
                         <i class="fas fa-swimming-pool"></i>
                     </div>
                     <h3>{{ t.pool }}</h3>
-                    <p>{{ lang == 'uz' ? 'Yopiq va ochiq basseynlar' : 'Крытые и открытые бассейны' }}</p>
+                    <p>
+                        {% if lang == 'uz' %}
+                            Yopiq va ochiq basseynlar
+                        {% else %}
+                            Крытые и открытые бассейны
+                        {% endif %}
+                    </p>
                 </div>
 
                 <div class="service-card animate-on-scroll">
@@ -45,7 +63,13 @@
                         <i class="fas fa-table-tennis"></i>
                     </div>
                     <h3>{{ t.tennis }}</h3>
-                    <p>{{ lang == 'uz' ? 'Sport zalida' : 'В спортивном зале' }}</p>
+                    <p>
+                        {% if lang == 'uz' %}
+                            Sport zalida
+                        {% else %}
+                            В спортивном зале
+                        {% endif %}
+                    </p>
                 </div>
 
                 <div class="service-card animate-on-scroll">
@@ -53,7 +77,13 @@
                         <i class="fas fa-child"></i>
                     </div>
                     <h3>{{ t.playground }}</h3>
-                    <p>{{ lang == 'uz' ? '1 soat bepul' : '1 час бесплатно' }}</p>
+                    <p>
+                        {% if lang == 'uz' %}
+                            1 soat bepul
+                        {% else %}
+                            1 час бесплатно
+                        {% endif %}
+                    </p>
                 </div>
 
                 <div class="service-card animate-on-scroll">
@@ -61,7 +91,13 @@
                         <i class="fas fa-parking"></i>
                     </div>
                     <h3>{{ t.parking }}</h3>
-                    <p>{{ lang == 'uz' ? 'Xavfsiz avtomobil to\'xtash joyi' : 'Безопасная парковка' }}</p>
+                    <p>
+                        {% if lang == 'uz' %}
+                            Xavfsiz avtomobil to'xtash joyi
+                        {% else %}
+                            Безопасная парковка
+                        {% endif %}
+                    </p>
                 </div>
 
                 <div class="service-card animate-on-scroll">
@@ -69,22 +105,40 @@
                         <i class="fas fa-wifi"></i>
                     </div>
                     <h3>{{ t.wifi }}</h3>
-                    <p>{{ lang == 'uz' ? 'Butun hududda tezkor internet' : 'Высокоскоростной интернет на всей территории' }}</p>
+                    <p>
+                        {% if lang == 'uz' %}
+                            Butun hududda tezkor internet
+                        {% else %}
+                            Высокоскоростной интернет на всей территории
+                        {% endif %}
+                    </p>
                 </div>
             </div>
         </div>
 
         <!-- Услуги с питанием -->
         <div class="services-block">
-            <h2 class="services-block-title">{{ lang == 'uz' ? 'Ovqat bilan kiradigan xizmatlar' : 'Услуги, включенные с питанием' }}</h2>
-            <p class="services-subtitle">{{ lang == 'uz' ? 'Ovqat tarifini tanlaganingizda qo\'shimcha' : 'Дополнительно при выборе тарифа с питанием' }}</p>
+            <h2 class="services-block-title">
+                {% if lang == 'uz' %}
+                    Ovqat bilan kiradigan xizmatlar
+                {% else %}
+                    Услуги, включенные с питанием
+                {% endif %}
+            </h2>
+            <p class="services-subtitle">
+                {% if lang == 'uz' %}
+                    Ovqat tarifini tanlaganingizda qo'shimcha
+                {% else %}
+                    Дополнительно при выборе тарифа с питанием
+                {% endif %}
+            </p>
 
             <div class="services-meal-grid">
                 <div class="meal-service animate-on-scroll">
                     <i class="fas fa-utensils"></i>
                     <div>
                         <h4>{{ t.lunch }}</h4>
-                        <p>{{ lang == 'uz' ? '12:00 - 15:00' : '12:00 - 15:00' }}</p>
+                        <p>12:00 - 15:00</p>
                     </div>
                 </div>
 
@@ -92,7 +146,7 @@
                     <i class="fas fa-concierge-bell"></i>
                     <div>
                         <h4>{{ t.dinner }}</h4>
-                        <p>{{ lang == 'uz' ? '18:00 - 22:00' : '18:00 - 22:00' }}</p>
+                        <p>18:00 - 22:00</p>
                     </div>
                 </div>
 
@@ -100,7 +154,13 @@
                     <i class="fas fa-gamepad"></i>
                     <div>
                         <h4>{{ t.billiard }}</h4>
-                        <p>{{ lang == 'uz' ? '1 soat bepul o\'yin' : '1 час бесплатной игры' }}</p>
+                        <p>
+                            {% if lang == 'uz' %}
+                                1 soat bepul o'yin
+                            {% else %}
+                                1 час бесплатной игры
+                            {% endif %}
+                        </p>
                     </div>
                 </div>
 
@@ -108,7 +168,13 @@
                     <i class="fas fa-spa"></i>
                     <div>
                         <h4>{{ t.salt_room }}</h4>
-                        <p>{{ lang == 'uz' ? '1 soat seans' : '1 час сеанса' }}</p>
+                        <p>
+                            {% if lang == 'uz' %}
+                                1 soat seans
+                            {% else %}
+                                1 час сеанса
+                            {% endif %}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -117,7 +183,13 @@
         <!-- Дополнительные услуги -->
         <div class="services-block">
             <h2 class="services-block-title">{{ t.additional_services }}</h2>
-            <p class="services-subtitle">{{ lang == 'uz' ? 'Qo\'shimcha to\'lov evaziga' : 'За дополнительную плату' }}</p>
+            <p class="services-subtitle">
+                {% if lang == 'uz' %}
+                    Qo'shimcha to'lov evaziga
+                {% else %}
+                    За дополнительную плату
+                {% endif %}
+            </p>
 
             <div class="additional-services-grid">
                 <div class="additional-service-item animate-on-scroll">
@@ -127,9 +199,21 @@
                     </div>
                     <div class="service-price">
                         <span>900 000 - 1 100 000</span>
-                        <small>{{ lang == 'uz' ? "so'm/kun" : "сум/день" }}</small>
+                        <small>
+                            {% if lang == 'uz' %}
+                                so'm/kun
+                            {% else %}
+                                сум/день
+                            {% endif %}
+                        </small>
                     </div>
-                    <p>{{ lang == 'uz' ? '9:00 dan 18:00 gacha' : 'С 9:00 до 18:00' }}</p>
+                    <p>
+                        {% if lang == 'uz' %}
+                            9:00 dan 18:00 gacha
+                        {% else %}
+                            С 9:00 до 18:00
+                        {% endif %}
+                    </p>
                 </div>
 
                 <div class="additional-service-item animate-on-scroll">
@@ -139,9 +223,21 @@
                     </div>
                     <div class="service-price">
                         <span>1 500 000 - 1 800 000</span>
-                        <small>{{ lang == 'uz' ? "so'm/kun" : "сум/день" }}</small>
+                        <small>
+                            {% if lang == 'uz' %}
+                                so'm/kun
+                            {% else %}
+                                сум/день
+                            {% endif %}
+                        </small>
                     </div>
-                    <p>{{ lang == 'uz' ? '9:00 dan 18:00 gacha' : 'С 9:00 до 18:00' }}</p>
+                    <p>
+                        {% if lang == 'uz' %}
+                            9:00 dan 18:00 gacha
+                        {% else %}
+                            С 9:00 до 18:00
+                        {% endif %}
+                    </p>
                 </div>
 
                 <div class="additional-service-item animate-on-scroll">
@@ -151,17 +247,41 @@
                     </div>
                     <div class="service-price">
                         <span>250 000</span>
-                        <small>{{ lang == 'uz' ? "so'm" : "сум" }}</small>
+                        <small>
+                            {% if lang == 'uz' %}
+                                so'm
+                            {% else %}
+                                сум
+                            {% endif %}
+                        </small>
                     </div>
-                    <p>{{ lang == 'uz' ? 'Qo\'shimcha mehmon uchun' : 'Для дополнительного гостя' }}</p>
+                    <p>
+                        {% if lang == 'uz' %}
+                            Qo'shimcha mehmon uchun
+                        {% else %}
+                            Для дополнительного гостя
+                        {% endif %}
+                    </p>
                 </div>
             </div>
         </div>
 
         <!-- CTA блок -->
         <div class="services-cta">
-            <h3>{{ lang == 'uz' ? 'Savollaringiz bormi?' : 'Есть вопросы?' }}</h3>
-            <p>{{ lang == 'uz' ? 'Biz bilan bog\'laning va barcha savollaringizga javob beramiz' : 'Свяжитесь с нами и мы ответим на все ваши вопросы' }}</p>
+            <h3>
+                {% if lang == 'uz' %}
+                    Savollaringiz bormi?
+                {% else %}
+                    Есть вопросы?
+                {% endif %}
+            </h3>
+            <p>
+                {% if lang == 'uz' %}
+                    Biz bilan bog'laning va barcha savollaringizga javob beramiz
+                {% else %}
+                    Свяжитесь с нами и мы ответим на все ваши вопросы
+                {% endif %}
+            </p>
             <div class="cta-buttons">
                 <a href="/booking" class="btn btn-primary">{{ t.reserve_now }}</a>
                 <a href="/contacts" class="btn btn-outline">{{ t.nav_contacts }}</a>
@@ -169,6 +289,94 @@
         </div>
     </div>
 </section>
+<!-- Добавьте в templates/services.html после существующих услуг: -->
+
+<!-- Активный отдых -->
+<div class="services-block">
+    <h2 class="services-block-title">
+        {% if lang == 'uz' %}Faol dam olish{% else %}Активный отдых{% endif %}
+    </h2>
+    <p class="services-subtitle">
+        {% if lang == 'uz' %}Tog'larda qiziqarli vaqt o'tkazish{% else %}Интересное времяпровождение в горах{% endif %}
+    </p>
+
+    <div class="activities-grid">
+        <div class="activity-card animate-on-scroll">
+            <div class="activity-icon">
+                <i class="fas fa-walking"></i>
+            </div>
+            <h3>{% if lang == 'uz' %}Tog' sayri{% else %}Прогулки по горам{% endif %}</h3>
+            <p>{% if lang == 'uz' %}Mustaqil yoki guruh bilan{% else %}Самостоятельно или в группе{% endif %}</p>
+        </div>
+
+        <div class="activity-card animate-on-scroll">
+            <div class="activity-icon">
+                <i class="fas fa-camera"></i>
+            </div>
+            <h3>{% if lang == 'uz' %}Foto zonalar{% else %}Фото-зоны{% endif %}</h3>
+            <p>{% if lang == 'uz' %}Go'zal manzaralar{% else %}Красивые виды{% endif %}</p>
+        </div>
+
+        <div class="activity-card animate-on-scroll">
+            <div class="activity-icon">
+                <i class="fas fa-fire"></i>
+            </div>
+            <h3>{% if lang == 'uz' %}Mangal zonasi{% else %}Мангальная зона{% endif %}</h3>
+            <p>{% if lang == 'uz' %}Ochiq havoda kabob{% else %}Шашлык на свежем воздухе{% endif %}</p>
+        </div>
+
+        <div class="activity-card animate-on-scroll">
+            <div class="activity-icon">
+                <i class="fas fa-chess"></i>
+            </div>
+            <h3>{% if lang == 'uz' %}Stol o'yinlari{% else %}Настольные игры{% endif %}</h3>
+            <p>{% if lang == 'uz' %}Shaxmat, narda va boshqalar{% else %}Шахматы, нарды и другие{% endif %}</p>
+        </div>
+    </div>
+</div>
+
+<!-- Специальные предложения -->
+<div class="services-block">
+    <h2 class="services-block-title">{{ t.special_offers }}</h2>
+
+    <div class="special-offers-grid">
+        <div class="special-offer animate-on-scroll">
+            <div class="offer-badge">{% if lang == 'uz' %}Yangi{% else %}Новинка{% endif %}</div>
+            <h3>{% if lang == 'uz' %}Hafta oxiri paketi{% else %}Пакет выходного дня{% endif %}</h3>
+            <ul>
+                <li>{% if lang == 'uz' %}2 kunlik joylashish{% else %}Проживание 2 дня{% endif %}</li>
+                <li>{% if lang == 'uz' %}3 mahal ovqat{% else %}3-разовое питание{% endif %}</li>
+                <li>{% if lang == 'uz' %}Basseyn va sauna{% else %}Бассейн и сауна{% endif %}</li>
+                <li>{% if lang == 'uz' %}Bepul Wi-Fi{% else %}Бесплатный Wi-Fi{% endif %}</li>
+            </ul>
+            <a href="/booking" class="btn btn-primary btn-small">{% if lang == 'uz' %}Batafsil{% else %}Подробнее{% endif %}</a>
+        </div>
+
+        <div class="special-offer animate-on-scroll">
+            <div class="offer-badge">{% if lang == 'uz' %}Ommabop{% else %}Популярное{% endif %}</div>
+            <h3>{{ t.family_package }}</h3>
+            <ul>
+                <li>{% if lang == 'uz' %}Katta oilaviy xona{% else %}Большой семейный номер{% endif %}</li>
+                <li>{% if lang == 'uz' %}To'liq ovqat{% else %}Полное питание{% endif %}</li>
+                <li>{% if lang == 'uz' %}Bolalar maydoni{% else %}Детская площадка{% endif %}</li>
+                <li>{% if lang == 'uz' %}Bepul parking{% else %}Бесплатная парковка{% endif %}</li>
+            </ul>
+            <a href="/booking" class="btn btn-primary btn-small">{% if lang == 'uz' %}Batafsil{% else %}Подробнее{% endif %}</a>
+        </div>
+
+        <div class="special-offer animate-on-scroll">
+            <div class="offer-badge">{% if lang == 'uz' %}Guruhlar uchun{% else %}Для групп{% endif %}</div>
+            <h3>{% if lang == 'uz' %}Korporativ dam olish{% else %}Корпоративный отдых{% endif %}</h3>
+            <ul>
+                <li>{% if lang == 'uz' %}10 kishidan guruhlar uchun{% else %}Для групп от 10 человек{% endif %}</li>
+                <li>{% if lang == 'uz' %}Konferens-zal{% else %}Конференц-зал{% endif %}</li>
+                <li>{% if lang == 'uz' %}Guruh uchun chegirma{% else %}Скидка для группы{% endif %}</li>
+                <li>{% if lang == 'uz' %}Maxsus menyu{% else %}Специальное меню{% endif %}</li>
+            </ul>
+            <a href="/booking" class="btn btn-primary btn-small">{% if lang == 'uz' %}Batafsil{% else %}Подробнее{% endif %}</a>
+        </div>
+    </div>
+</div>
 
 <!-- Стили для страницы услуг -->
 <style>

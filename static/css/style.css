@@ -1,3 +1,8 @@
+html, body {
+    overflow-x: hidden !important;
+    max-width: 100%;
+}
+
 /* Сброс стилей и базовые настройки */
 * {
     margin: 0;
@@ -45,12 +50,16 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
+    min-height: 80px;
 }
 
 .logo img {
-    height: 50px;
+    height: 70px;
+    width: auto;
     transition: var(--transition);
+    display: block;
+    object-fit: contain;
 }
 
 .logo:hover img {
@@ -61,6 +70,7 @@ body {
     display: flex;
     gap: 2rem;
     align-items: center;
+    position: relative;
 }
 
 .nav-link {
@@ -102,6 +112,9 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    background: rgba(0,0,0,0.03);
+    padding: 5px 15px;
+    border-radius: 20px;
 }
 
 .lang-btn {
@@ -109,14 +122,17 @@ body {
     text-decoration: none;
     font-weight: 500;
     transition: var(--transition);
-    padding: 0.3rem 0.8rem;
-    border-radius: 4px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
 }
 
 .lang-btn:hover,
 .lang-btn.active {
     color: var(--white);
     background: var(--primary-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
 .lang-divider {
@@ -150,7 +166,7 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    margin-top: 70px;
+    margin-top: 80px;
 }
 
 .hero-background {
@@ -180,9 +196,21 @@ body {
 .hero-content {
     text-align: center;
     color: var(--white);
-    z-index: 1;
+    z-index: 3;
     max-width: 800px;
     padding: 0 20px;
+    animation: heroAppear 1.5s ease-out;
+}
+
+@keyframes heroAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero-title {
@@ -206,19 +234,12 @@ body {
     transform: translateX(-50%);
     color: var(--white);
     font-size: 2rem;
-    animation: bounce 2s infinite;
+    animation: float 3s ease-in-out infinite;
 }
 
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateX(-50%) translateY(0);
-    }
-    40% {
-        transform: translateX(-50%) translateY(-10px);
-    }
-    60% {
-        transform: translateX(-50%) translateY(-5px);
-    }
+@keyframes float {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-10px); }
 }
 
 /* Кнопки */
@@ -232,6 +253,9 @@ body {
     border: none;
     cursor: pointer;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
 
 .btn-primary {
@@ -293,10 +317,11 @@ body {
 }
 
 .section-divider {
-    width: 80px;
-    height: 4px;
+    width: 60px;
+    height: 3px;
     background: var(--primary-color);
     margin: 0 auto;
+    border-radius: 2px;
 }
 
 .bg-light {
@@ -391,6 +416,7 @@ body {
     border-radius: 10px;
     height: 250px;
     cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 }
 
 .gallery-item img {
@@ -406,7 +432,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -452,7 +478,7 @@ body {
 .page-header {
     background: var(--light-gray);
     padding: 100px 0 40px;
-    margin-top: 70px;
+    margin-top: 80px;
 }
 
 .page-title {
@@ -631,6 +657,7 @@ body {
     background: var(--primary-color);
     color: var(--white);
     padding: 50px 0 20px;
+    position: relative;
 }
 
 .footer-content {
@@ -638,11 +665,25 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 3rem;
     margin-bottom: 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+.footer-section {
+    position: relative;
+    z-index: 10;
 }
 
 .footer-section h3,
 .footer-section h4 {
     margin-bottom: 1rem;
+    color: var(--white);
+    font-weight: 600;
+}
+
+.footer-section p,
+.footer-section ul li {
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .footer-section ul {
@@ -654,14 +695,13 @@ body {
 }
 
 .footer-section a {
-    color: var(--white);
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
-    opacity: 0.8;
     transition: var(--transition);
 }
 
 .footer-section a:hover {
-    opacity: 1;
+    color: var(--white);
 }
 
 .social-links {
@@ -728,8 +768,59 @@ body {
     }
 }
 
+/* Лоадер */
+.page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: opacity 0.5s, visibility 0.5s;
+}
+
+.page-loader.loaded {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-mountain svg {
+    width: 80px;
+    height: 40px;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.4;
+        transform: scale(0.9);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 /* Адаптивность */
 @media (max-width: 768px) {
+    .logo img {
+        height: 55px;
+    }
+
+    .nav-wrapper {
+        min-height: 70px;
+    }
+
+    .hero,
+    .page-header {
+        margin-top: 70px;
+    }
+
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -777,4 +868,860 @@ body {
     .category-btn {
         width: 100%;
     }
+}
+/* Добавьте эти стили в конец файла static/css/style.css */
+
+/* Лайтбокс для галереи */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.lightbox-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: var(--white);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.lightbox-close:hover {
+    transform: scale(1.2);
+}
+
+/* Стили для скрытия/показа навбара при скролле */
+.navbar.scroll-down {
+    transform: translateY(-100%);
+}
+
+.navbar.scroll-up {
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* Уменьшение логотипа при скролле */
+.navbar.scrolled {
+    padding: 0.3rem 0;
+}
+
+.navbar.scrolled .logo img {
+    height: 55px;
+}
+
+/* Дополнительный класс для выравнивания */
+.text-center {
+    text-align: center;
+}
+
+.mt-4 {
+    margin-top: 2rem;
+}
+/* В конец файла static/css/style.css добавьте: */
+
+/* ========== СТИЛИ ДЛЯ GOOGLE MAPS ========== */
+/* Стили для Google Maps */
+.map-placeholder {
+    background: var(--light-gray);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.map-placeholder iframe {
+    border-radius: 10px;
+}
+
+.directions {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    margin-top: 1.5rem;
+}
+
+.directions h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.directions p {
+    color: var(--dark-gray);
+    line-height: 1.8;
+}
+
+.directions strong {
+    color: var(--secondary-color);
+}
+
+/* Добавьте в конец static/css/style.css */
+
+/* ========== ЭЛЕГАНТНАЯ ГОРНАЯ ГРАФИКА ========== */
+
+/* 1. Горный узор в hero секции */
+.hero-mountain-pattern {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.hero-mountain-pattern svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* 2. Декоративный элемент для заголовков секций */
+.section-header {
+    position: relative;
+}
+
+.section-header::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 40px;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,40 L25,15 L50,25 L75,10 L100,40' fill='none' stroke='%23333' stroke-width='1' opacity='0.3'/%3E%3Cpath d='M10,40 L25,25 L40,30 L55,20 L70,28 L85,22 L100,35' fill='none' stroke='%23666' stroke-width='0.5' opacity='0.2'/%3E%3C/svg%3E") no-repeat center;
+    background-size: contain;
+}
+
+/* 3. Горный паттерн для карточек */
+.room-card::before,
+.feature-card::before,
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20,50 L35,20 L50,50' fill='%23f5f5f5' stroke='%23e0e0e0' stroke-width='0.5'/%3E%3Cpath d='M10,50 L20,30 L30,50' fill='%23fafafa' stroke='%23e0e0e0' stroke-width='0.5'/%3E%3C/svg%3E") no-repeat;
+    opacity: 0.5;
+    border-radius: 0 10px 0 0;
+}
+
+/* 4. Анимированный горный фон для CTA секции */
+.cta-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: -50px;
+    width: 150%;
+    height: 200px;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,200 L144,120 L288,160 L432,100 L576,140 L720,80 L864,130 L1008,90 L1152,150 L1296,110 L1440,170 L1440,200 Z' fill='rgba(255,255,255,0.05)'/%3E%3C/svg%3E") repeat-x;
+    animation: mountainMove 30s linear infinite;
+}
+
+@keyframes mountainMove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-1440px); }
+}
+
+/* 5. Элегантный разделитель с горами */
+.mountain-divider {
+    width: 100%;
+    height: 60px;
+    margin: 3rem 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,60 L50,20 L100,40 L150,10 L200,30 L250,15 L300,35 L350,25 L400,60' fill='none' stroke='%23e0e0e0' stroke-width='1'/%3E%3Ccircle cx='150' cy='10' r='3' fill='%23333'/%3E%3Ccircle cx='250' cy='15' r='2' fill='%23666'/%3E%3C/svg%3E") no-repeat center;
+    background-size: contain;
+    opacity: 0.7;
+}
+
+/* 6. Горный логотип для загрузчика */
+.loader-mountain svg {
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+/* 7. Специальный горный фон для страницы номеров */
+.rooms-section {
+    position: relative;
+}
+
+.rooms-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 500px;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,500 L360,200 L720,350 L1080,150 L1440,400 L1440,500 Z' fill='%23fafafa' opacity='0.5'/%3E%3Cpath d='M0,500 L240,300 L480,400 L720,250 L960,380 L1200,220 L1440,450 L1440,500 Z' fill='%23f5f5f5' opacity='0.7'/%3E%3C/svg%3E") no-repeat center;
+    background-size: cover;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* 8. Минималистичные горы для навбара */
+.navbar-mountains {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    pointer-events: none;
+    opacity: 0.1;
+}
+
+/* 9. Премиальный эффект для кнопок */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 20px;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,20 L25,5 L50,12 L75,3 L100,20' fill='rgba(255,255,255,0.1)'/%3E%3C/svg%3E") no-repeat center;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.btn:hover::after {
+    opacity: 1;
+    bottom: 0;
+}
+/* Добавьте эти премиальные функции в style.css */
+
+/* Анимированный горный фон при скролле */
+.parallax-mountains {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.03;
+}
+
+.parallax-layer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60%;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,400 L240,100 L480,250 L720,50 L960,200 L1200,80 L1440,300 L1440,400 Z' fill='%23000'/%3E%3C/svg%3E") repeat-x;
+    background-size: 1440px 100%;
+}
+
+/* Горный акцент для цитат и важного текста */
+.mountain-quote {
+    position: relative;
+    padding: 2rem 3rem;
+    margin: 2rem 0;
+    background: var(--light-gray);
+    border-radius: 10px;
+}
+
+.mountain-quote::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 30px;
+    width: 60px;
+    height: 30px;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 60 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,30 L20,0 L40,30' fill='%23f5f5f5' stroke='%23333' stroke-width='1'/%3E%3Cpath d='M20,30 L30,10 L40,30' fill='%23fafafa'/%3E%3Cpath d='M40,30 L50,15 L60,30' fill='%23f0f0f0'/%3E%3C/svg%3E");
+    background-size: contain;
+}
+
+/* Премиальный hover эффект с горами */
+.premium-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.premium-card::after {
+    content: '';
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.05) 0%, transparent 30%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 400 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,200 L100,50 L200,150 L300,30 L400,200' fill='rgba(0,0,0,0.02)'/%3E%3C/svg%3E");
+    background-size: cover;
+    transition: all 0.4s ease;
+}
+
+.premium-card:hover::after {
+    bottom: 0;
+}
+
+/* Стилизованные номера страниц */
+.page-number {
+    position: relative;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+}
+
+.page-number::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 40 3' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,3 L10,0 L20,3 L30,0 L40,3' fill='%23333'/%3E%3C/svg%3E");
+}
+
+/* Анимация появления с горным эффектом */
+@keyframes mountainRise {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mountain-animate {
+    animation: mountainRise 0.8s ease-out forwards;
+}
+
+/* Водяной знак с горами */
+body::before {
+    content: '';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 150px;
+    height: 75px;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 150 75' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,75 L37,20 L75,50 L112,10 L150,75' fill='none' stroke='rgba(0,0,0,0.03)' stroke-width='2'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+}
+/* Добавьте в конец static/css/style.css */
+
+/* ========== ПОДПИСЬ РАЗРАБОТЧИКА ========== */
+
+/* Базовые стили */
+.developer-signature {
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.developer-signature:hover {
+    opacity: 1;
+}
+
+.developer-signature p {
+    margin: 0.5rem 0;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.developer-signature a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.developer-signature a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--white);
+    transition: width 0.3s ease;
+}
+
+.developer-signature a:hover::after {
+    width: 100%;
+}
+
+/* Вариант 1: Минималистичный */
+.signature-line {
+    width: 50px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 0 auto 1rem;
+}
+
+.heart {
+    color: #e74c3c;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Вариант 2: С горным акцентом */
+.mountain-style {
+    position: relative;
+}
+
+.signature-mountain {
+    width: 60px;
+    height: 30px;
+    margin: 0 auto 0.5rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.signature-year {
+    display: inline-block;
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+/* Вариант 3: Профессиональный */
+.professional .signature-content {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+}
+
+.signature-symbol {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: 'Courier New', monospace;
+}
+
+.signature-text {
+    text-align: left;
+}
+
+.signature-name {
+    font-weight: 600;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.signature-role {
+    margin: 0;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* Анимация появления при скролле */
+.developer-signature {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: signatureAppear 1s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes signatureAppear {
+    to {
+        opacity: 0.8;
+        transform: translateY(0);
+    }
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+    .professional .signature-content {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+
+    .signature-text {
+        text-align: center;
+    }
+
+    .developer-signature {
+        font-size: 0.8rem;
+    }
+}
+
+/* Добавьте в static/css/style.css для исправления позиции */
+
+/* Исправление позиции специальных предложений */
+.special-offers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin: 0 auto; /* Центрирование */
+    max-width: 1200px; /* Ограничение ширины */
+}
+
+/* Убедитесь, что заголовок центрирован */
+.services-block-title {
+    text-align: center !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* Исправление для мобильных */
+@media (max-width: 768px) {
+    .special-offers-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+}
+/* Добавьте в static/css/style.css */
+
+/* Удаление лишнего бокового меню если оно появилось */
+.sidebar,
+.left-menu,
+.side-navigation {
+    display: none !important;
+}
+
+/* Центрирование основного контента */
+main {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+/* Добавьте в конец static/css/style.css */
+
+/* ========== ИСПРАВЛЕНИЯ ГЛАВНОЙ СТРАНИЦЫ ========== */
+
+/* Исправление левой синей линии */
+body {
+    overflow-x: hidden !important;
+}
+
+.hero,
+.section-padding {
+    overflow: hidden;
+}
+
+/* Убираем любые элементы, выходящие за границы */
+* {
+    max-width: 100vw;
+}
+
+/* Активный отдых секция */
+.activities-section {
+    background: var(--light-gray);
+}
+
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.activity-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.activity-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.activity-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.activity-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.activity-card p {
+    color: var(--dark-gray);
+    font-size: 0.95rem;
+}
+
+/* Специальные предложения - улучшенный дизайн */
+.special-offers {
+    background: white;
+    position: relative;
+}
+
+.offers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.offer-card {
+    background: var(--white);
+    border: 2px solid var(--light-gray);
+    border-radius: 15px;
+    padding: 2rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.offer-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.offer-card.featured {
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.offer-badge {
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background: var(--primary-color);
+    color: white;
+    padding: 5px 20px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.offer-badge.popular {
+    background: #e74c3c;
+}
+
+.offer-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+.offer-features {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.offer-features li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--dark-gray);
+}
+
+.offer-features i {
+    color: #4CAF50;
+    font-size: 0.9rem;
+}
+
+.offer-price {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--light-gray);
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: var(--dark-gray);
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.new-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.currency {
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    color: var(--dark-gray);
+}
+
+.price-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--dark-gray);
+    margin-bottom: 0.5rem;
+}
+
+.discount {
+    display: inline-block;
+    background: #4CAF50;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+/* Преимущества секция - заполнение пустого места */
+.advantages-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
+}
+
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.advantage-item {
+    text-align: center;
+}
+
+.advantage-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.advantage-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.advantage-text {
+    color: var(--dark-gray);
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+    .activities-grid,
+    .offers-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .offer-card.featured {
+        transform: scale(1);
+    }
+
+    .advantages-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+/* Добавьте в static/css/style.css - ИСПРАВЛЕНИЕ ЛИНИЙ */
+
+/* Исправляем позицию горных линий в заголовках */
+.section-header::after {
+    bottom: -20px; /* Изменено с -30px на -20px - поднимаем выше */
+}
+
+.section-divider {
+    margin: 0 auto 10px; /* Уменьшаем отступ снизу */
+}
+
+/* Исправляем линию в "Почему выбирают нас" */
+.section-title {
+    margin-bottom: 15px; /* Уменьшаем отступ */
+}
+
+/* Убираем лишние декоративные элементы, которые создают линии */
+.mountain-divider {
+    display: none; /* Временно скрываем */
+}
+
+/* Исправление для иконки костра */
+.activity-card .fa-campfire {
+    /* Font Awesome 5 не имеет campfire, используем fire */
+}
+
+/* Альтернативный вариант - создаем свою иконку костра */
+.campfire-icon {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+}
+
+.campfire-icon::before {
+    content: '🔥';
+    font-size: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Скрываем секцию специальных предложений */
+.special-offers {
+    display: none !important; /* Временно скрыто до осени */
+}
+/* Полностью убираем декоративные горные линии если мешают */
+.section-header::after,
+.mountain-divider,
+.navbar-mountains {
+    display: none !important;
 }

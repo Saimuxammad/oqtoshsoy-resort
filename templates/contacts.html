@@ -1,0 +1,327 @@
+{% extends "base.html" %}
+
+{% block title %}{{ t.nav_contacts }} - Oqtoshsoy Resort{% endblock %}
+
+{% block content %}
+<!-- Заголовок страницы -->
+<section class="page-header">
+    <div class="container">
+        <h1 class="page-title">{{ t.nav_contacts }}</h1>
+        <nav class="breadcrumb">
+            <a href="/">{{ t.nav_home }}</a>
+            <span>/</span>
+            <span>{{ t.nav_contacts }}</span>
+        </nav>
+    </div>
+</section>
+
+<!-- Контакты -->
+<section class="contacts-section section-padding">
+    <div class="container">
+        <div class="contacts-grid">
+            <!-- Контактная информация -->
+            <div class="contact-info">
+                <h2>{{ t.contact_title }}</h2>
+
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h3>{{ t.contact_phone }}</h3>
+                        <p>+998 90 096-50-55</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+    <i class="fas fa-map-marker-alt"></i>
+    <div>
+        <h3>{{ t.contact_address }}</h3>
+        <p>{% if lang == 'uz' %}Toshkent viloyati, Bostonliq tumani, Oqtosh qishlog'i{% else %}Ташкентская область, Бостанлыкский район, поселок Акташ{% endif %}</p>
+        <p>Oqtoshsoy Resort</p>
+    </div>
+</div>
+
+
+
+<div class="contact-item">
+    <i class="fas fa-map-pin"></i>
+    <div>
+        <h3>{{ t.gps_coordinates }}</h3>
+        <p>N41.656502 E69.757797</p>
+        <a href="https://maps.google.com/?q=41.656502,69.757797" target="_blank" class="btn btn-small btn-outline">
+            <i class="fas fa-map"></i> {% if lang == 'uz' %}Xaritada ko'rish{% else %}Показать на карте{% endif %}
+        </a>
+    </div>
+</div>
+
+                <!-- Социальные сети -->
+                <div class="social-contacts">
+                    <h3>{% if lang == 'uz' %}Ijtimoiy tarmoqlar{% else %}Социальные сети{% endif %}</h3>
+                    <div class="social-buttons">
+                        <a href="https://t.me/Oqtosh_Soy" class="social-btn telegram" target="_blank">
+                            <i class="fab fa-telegram"></i> Telegram
+                        </a>
+                        <a href="https://www.instagram.com/oqtoshsoy.uz?igsh=MW42cGlsODV2cDh1Nw&utm_source=qr" class="social-btn instagram">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a>
+                        <a href="https://www.facebook.com/share/1Ja3QwwjQL/?mibextid=wwXIfr" class="social-btn facebook">
+                            <i class="fab fa-facebook"></i> Facebook
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+           <!-- Найдите в файле templates/contacts.html блок с картой и замените на: -->
+
+<!-- Карта -->
+<div class="map-container">
+    <h2>{{ t.our_location }}</h2>
+    <div class="map-placeholder">
+        <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.4512043251!2d69.757797!3d41.656502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDM5JzIzLjQiTiA2OcKwNDUnMjguMSJF!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s"
+    width="100%"
+    height="450"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy">
+</iframe>
+    </div>
+
+    <!-- Замените блок "Qanday borish mumkin" в contacts.html на этот (только один раз): -->
+
+<div class="directions">
+    <h3>{% if lang == 'uz' %}Qanday borish mumkin{% else %}Как добраться{% endif %}</h3>
+    <p>
+        {% if lang == 'uz' %}
+            Toshkentdan 80 km masofada joylashgan. Shaxsiy transport yoki taksi orqali borish mumkin.
+        {% else %}
+            Расположен в 80 км от Ташкента. Можно добраться на личном транспорте или такси.
+        {% endif %}
+    </p>
+    <p><strong>{% if lang == 'uz' %}Yo'nalish{% else %}Направление{% endif %}:</strong> M39 {% if lang == 'uz' %}yo'li orqali{% else %}трасса{% endif %}</p>
+    <p><strong>{% if lang == 'uz' %}Vaqt{% else %}Время в пути{% endif %}:</strong> 1 {% if lang == 'uz' %}soat{% else %}час{% endif %} 20 {% if lang == 'uz' %}daqiqa{% else %}минут{% endif %}</p>
+</div>
+</div>
+        </div>
+
+        <!-- CTA секция -->
+        <div class="contact-cta">
+            <h2>{% if lang == 'uz' %}Savollaringiz bormi?{% else %}Есть вопросы?{% endif %}</h2>
+            <p>
+                {% if lang == 'uz' %}
+                    Biz bilan bog'laning va biz sizga yordam beramiz!
+                {% else %}
+                    Свяжитесь с нами и мы поможем вам!
+                {% endif %}
+            </p>
+            <a href="/booking" class="btn btn-primary btn-large">{{ t.reserve_now }}</a>
+        </div>
+    </div>
+</section>
+
+<!-- Стили для страницы контактов -->
+<style>
+.contacts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.contact-info h2,
+.map-container h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--light-gray);
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+.contact-item:hover {
+    background: var(--white);
+    box-shadow: var(--shadow);
+}
+
+.contact-item i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    width: 40px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.contact-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.contact-item p {
+    color: var(--dark-gray);
+    margin: 0.25rem 0;
+}
+
+.social-contacts {
+    margin-top: 2rem;
+}
+
+.social-contacts h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.social-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: var(--light-gray);
+    color: var(--secondary-color);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: var(--transition);
+}
+
+.social-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.social-btn.telegram:hover {
+    background: #0088cc;
+    color: var(--white);
+}
+
+.social-btn.instagram:hover {
+    background: #E4405F;
+    color: var(--white);
+}
+
+.social-btn.facebook:hover {
+    background: #1877f2;
+    color: var(--white);
+}
+
+.map-placeholder {
+    background: var(--light-gray);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.directions {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+.directions h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.contact-cta {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 3rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.contact-cta h2 {
+    color: var(--white);
+    margin-bottom: 1rem;
+}
+
+.contact-cta p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+/* Лайтбокс для галереи */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.lightbox-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: var(--white);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.lightbox-close:hover {
+    transform: scale(1.2);
+}
+
+/* Дополнительные стили для навбара при скролле */
+.navbar.scroll-down {
+    transform: translateY(-100%);
+}
+
+.navbar.scroll-up {
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .contacts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .social-buttons {
+        flex-direction: column;
+    }
+
+    .social-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+</style>
+{% endblock %}

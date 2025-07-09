@@ -210,3 +210,64 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Премиальный лоадер
+document.addEventListener('DOMContentLoaded', function() {
+    const loader = document.querySelector('.page-loader');
+    if (loader) {
+        setTimeout(function() {
+            loader.classList.add('loaded');
+        }, 500);
+    }
+});
+
+window.addEventListener('load', function() {
+    const loader = document.querySelector('.page-loader');
+    if (loader) {
+        loader.classList.add('loaded');
+    }
+});
+
+// Изменение размера логотипа при скролле
+window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    const scrolled = window.scrollY > 50;
+
+    if (scrolled) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+// Параллакс эффект для фона hero секции
+document.addEventListener('scroll', function() {
+    const scrolled = window.pageYOffset;
+    const heroImg = document.querySelector('.hero-background img');
+
+    if (heroImg) {
+        heroImg.style.transform = `translateY(${scrolled * 0.5}px)`;
+    }
+});
+// Параллакс эффект для горных слоев
+document.addEventListener('DOMContentLoaded', function() {
+    // Создаем фоновые горы
+    const parallaxContainer = document.createElement('div');
+    parallaxContainer.className = 'parallax-mountains';
+    parallaxContainer.innerHTML = `
+        <div class="parallax-layer" data-speed="0.5"></div>
+        <div class="parallax-layer" data-speed="0.3" style="opacity: 0.5;"></div>
+    `;
+    document.body.prepend(parallaxContainer);
+
+    // Анимация при скролле
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const layers = document.querySelectorAll('.parallax-layer');
+
+        layers.forEach(layer => {
+            const speed = layer.dataset.speed;
+            layer.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+    });
+});
