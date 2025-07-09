@@ -306,7 +306,7 @@ def submit_booking():
 📅 Выезд | Chiqish: {data['check_out']}
 🏠 Номер | Xona: {room_name}
 👥 Гостей | Mehmonlar: {data['guests']}
-💬 Комментарий | Izoh: {data.get('comment', 'Нет | Yo\'q')}
+💬 Комментарий | Izoh: {data.get('comment', "Нет | Yo'q")}
 """
 
         # Отправляем в Telegram
