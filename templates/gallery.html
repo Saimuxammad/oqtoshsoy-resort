@@ -54,7 +54,7 @@
 {% endfor %}
 
 <!-- Бассейны -->
-{% for i in range(1, 9) %}
+{% for i in range(1, 10) %}
 <div class="gallery-item animate-on-scroll" data-category="pool" onclick="openLightbox('{{ url_for('static', filename='images/gallery/pool' + i|string + '.jpg') }}')">
     <img src="{{ url_for('static', filename='images/gallery/pool' + i|string + '.jpg') }}" alt="Pool {{ i }}" loading="lazy">
     <div class="gallery-overlay">
@@ -74,7 +74,7 @@
 {% endfor %}
 
 <!-- Ресторан -->
-{% for i in range(1, 14) %}
+{% for i in range(1, 15) %}
 <div class="gallery-item animate-on-scroll" data-category="restaurant" onclick="openLightbox('{{ url_for('static', filename='images/gallery/restaurant' + i|string + '.jpg') }}')">
     <img src="{{ url_for('static', filename='images/gallery/restaurant' + i|string + '.jpg') }}" alt="Restaurant {{ i }}" loading="lazy">
     <div class="gallery-overlay">
