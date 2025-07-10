@@ -373,98 +373,99 @@
             <div class="section-divider"></div>
         </div>
 
-        <div class="gallery-grid">
-            <!-- Показываем 12 изображений разных категорий -->
-            <!-- Номера -->
-            <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
-                <img src="{{ url_for('static', filename='images/gallery/room43.jpg') }}" alt="Room 1">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
-                </div>
-            </div>
-
-            <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
-                <img src="{{ url_for('static', filename='images/gallery/room1.jpg') }}" alt="Room 5">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
-                </div>
-            </div>
-
-            <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
-                <img src="{{ url_for('static', filename='images/gallery/room19.jpg') }}" alt="Room 10">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
-                </div>
-            </div>
-
-            <!-- Бассейны -->
-            <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
-                <img src="{{ url_for('static', filename='images/gallery/pool2.jpg') }}" alt="Pool 1">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
-                </div>
-            </div>
-
-            <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
-                <img src="{{ url_for('static', filename='images/gallery/pool9.jpg') }}" alt="Pool 3">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
-                </div>
-            </div>
-
-            <!-- Природа -->
-            <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
-                <img src="{{ url_for('static', filename='images/gallery/nature4.jpg') }}" alt="Nature 1">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
-                </div>
-            </div>
-
-            <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
-                <img src="{{ url_for('static', filename='images/gallery/nature16.jpg') }}" alt="Nature 5">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
-                </div>
-            </div>
-
-            <!-- Ресторан -->
-            <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
-                <img src="{{ url_for('static', filename='images/gallery/restaurant1.jpg') }}" alt="Restaurant 1">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
-                </div>
-            </div>
-
-            <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
-                <img src="{{ url_for('static', filename='images/gallery/restaurant2.jpg') }}" alt="Restaurant 3">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
-                </div>
-            </div>
-
-            <!-- Экстерьер -->
-            <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
-                <img src="{{ url_for('static', filename='images/gallery/exterior1.jpg') }}" alt="Exterior 1">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
-                </div>
-            </div>
-
-            <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
-                <img src="{{ url_for('static', filename='images/gallery/exterior8.jpg') }}" alt="Exterior 3">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
-                </div>
-            </div>
-
-            <!-- Детская площадка -->
-            <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
-                <img src="{{ url_for('static', filename='images/gallery/playground1.jpg') }}" alt="Playground">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
-                </div>
-            </div>
+        <!-- Галерея превью в index.html -->
+<div class="gallery-grid">
+    <!-- Показываем 12 изображений разных категорий -->
+    <!-- Номера -->
+    <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
+        <img src="{{ url_for('static', filename='images/gallery/room43.jpg') }}" alt="Room 1" loading="lazy">
+        <div class="gallery-overlay">
+            <i class="fas fa-expand"></i>
         </div>
+    </div>
+
+    <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
+        <img src="{{ url_for('static', filename='images/gallery/room1.jpg') }}" alt="Room 5" loading="lazy">
+        <div class="gallery-overlay">
+            <i class="fas fa-expand"></i>
+        </div>
+    </div>
+
+    <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
+        <img src="{{ url_for('static', filename='images/gallery/room19.jpg') }}" alt="Room 10" loading="lazy">
+        <div class="gallery-overlay">
+            <i class="fas fa-expand"></i>
+        </div>
+    </div>
+
+    <!-- Бассейны -->
+    <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
+        <img src="{{ url_for('static', filename='images/gallery/pool2.jpg') }}" alt="Pool 1" loading="lazy">
+        <div class="gallery-overlay">
+            <i class="fas fa-expand"></i>
+        </div>
+    </div>
+
+    <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
+        <img src="{{ url_for('static', filename='images/gallery/pool9.jpg') }}" alt="Pool 3" loading="lazy">
+        <div class="gallery-overlay">
+            <i class="fas fa-expand"></i>
+        </div>
+    </div>
+
+    <!-- Природа -->
+    <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
+        <img src="{{ url_for('static', filename='images/gallery/nature4.jpg') }}" alt="Nature 1" loading="lazy">
+        <div class="gallery-overlay">
+            <i class="fas fa-expand"></i>
+        </div>
+    </div>
+
+    <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
+        <img src="{{ url_for('static', filename='images/gallery/nature16.jpg') }}" alt="Nature 5" loading="lazy">
+        <div class="gallery-overlay">
+            <i class="fas fa-expand"></i>
+        </div>
+    </div>
+
+    <!-- Ресторан -->
+    <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
+        <img src="{{ url_for('static', filename='images/gallery/restaurant1.jpg') }}" alt="Restaurant 1" loading="lazy">
+        <div class="gallery-overlay">
+            <i class="fas fa-expand"></i>
+        </div>
+    </div>
+
+    <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
+        <img src="{{ url_for('static', filename='images/gallery/restaurant2.jpg') }}" alt="Restaurant 3" loading="lazy">
+        <div class="gallery-overlay">
+            <i class="fas fa-expand"></i>
+        </div>
+    </div>
+
+    <!-- Экстерьер -->
+    <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
+        <img src="{{ url_for('static', filename='images/gallery/exterior1.jpg') }}" alt="Exterior 1" loading="lazy">
+        <div class="gallery-overlay">
+            <i class="fas fa-expand"></i>
+        </div>
+    </div>
+
+    <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
+        <img src="{{ url_for('static', filename='images/gallery/exterior8.jpg') }}" alt="Exterior 3" loading="lazy">
+        <div class="gallery-overlay">
+            <i class="fas fa-expand"></i>
+        </div>
+    </div>
+
+    <!-- Детская площадка -->
+    <div class="gallery-item animate-on-scroll" onclick="window.location.href='/gallery'">
+        <img src="{{ url_for('static', filename='images/gallery/playground1.jpg') }}" alt="Playground" loading="lazy">
+        <div class="gallery-overlay">
+            <i class="fas fa-expand"></i>
+        </div>
+    </div>
+</div>
 
         <div class="text-center mt-4">
             <a href="/gallery" class="btn btn-primary">

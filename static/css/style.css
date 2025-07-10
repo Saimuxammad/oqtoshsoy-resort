@@ -1725,3 +1725,18 @@ body {
 .navbar-mountains {
     display: none !important;
 }
+/* Placeholder для изображений во время загрузки */
+img[loading="lazy"] {
+    background: #f0f0f0;
+    min-height: 200px;
+}
+
+/* Анимация появления изображений */
+img {
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+img[loading="lazy"]:not([src]) {
+    opacity: 0;
+}

@@ -2,7 +2,48 @@ from flask import Flask, render_template, request, jsonify, session, redirect, u
 import os
 import requests
 from config import Config
+# Добавьте эти импорты в начало app.py
+from flask_compress import Compress
+from flask import send_from_directory
+import mimetypes
 
+# Также добавьте в requirements.txt:
+# Flask-Compress==1.13
+
+# После создания приложения Flask добавьте:
+app = Flask(__name__)
+app.config.from_object(Config)
+
+# Настройка компрессии
+Compress(app)
+app.config['COMPRESS_MIMETYPES'] = [
+    'text/html', 'text/css', 'text/xml', 'application/json',
+    'application/javascript', 'image/svg+xml', 'image/jpeg',
+    'image/png', 'image/webp'
+]
+app.config['COMPRESS_LEVEL'] = 6
+app.config['COMPRESS_MIN_SIZE'] = 500
+
+# Настройка кэширования для статических файлов
+@app.after_request
+def add_cache_headers(response):
+    if request.path.startswith('/static/'):
+        # Кэширование изображений на 30 дней
+        if any(request.path.endswith(ext) for ext in ['.jpg', '.jpeg', '.png', '.webp', '.ico']):
+            response.cache_control.max_age = 2592000  # 30 дней
+            response.cache_control.public = True
+        # Кэширование CSS и JS на 7 дней
+        elif any(request.path.endswith(ext) for ext in ['.css', '.js']):
+            response.cache_control.max_age = 604800  # 7 дней
+            response.cache_control.public = True
+    return response
+
+# Оптимизированная отдача статических файлов
+@app.route('/static/<path:filename>')
+def optimized_static(filename):
+    # Установка правильных MIME типов
+    mimetype = mimetypes.guess_type(filename)[0]
+    return send_from_directory('static', filename, mimetype=mimetype)
 app = Flask(__name__)
 app.config.from_object(Config)
 
