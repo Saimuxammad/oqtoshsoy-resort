@@ -200,65 +200,65 @@ rooms_data = {
     'standard_2': {
         'uz': 'Standart - 2 kishi',
         'ru': 'Стандарт - 2 человека',
-        'weekday_no_meal': 1100000,
-        'weekend_no_meal': 1300000,
-        'with_meal': 1800000,
+        'weekday_no_meal': 800000,
+        'weekend_no_meal': 950000,
+        'with_meal': 1400000,
         'capacity': 2
     },
     'lux_2': {
         'uz': 'Lyuks - 2 kishi',
         'ru': 'Люкс - 2 человека',
-        'weekday_no_meal': 1500000,
-        'weekend_no_meal': 1800000,
-        'with_meal': 2200000,
+        'weekday_no_meal': 1000000,
+        'weekend_no_meal': 1200000,
+        'with_meal': 1600000,
         'capacity': 2
     },
     'standard_4': {
         'uz': 'Standart - 4 kishi',
         'ru': 'Стандарт - 4 человека',
-        'weekday_no_meal': 1900000,
-        'weekend_no_meal': 2200000,
-        'with_meal': 2900000,
+        'weekday_no_meal': 1300000,
+        'weekend_no_meal': 1500000,
+        'with_meal': 2200000,
         'capacity': 4
     },
     'vip_small_4': {
         'uz': 'VIP (kichik) - 4 kishi',
         'ru': 'VIP (малый) - 4 человека',
-        'weekday_no_meal': 2000000,
-        'weekend_no_meal': 2350000,
-        'with_meal': 3400000,
+        'weekday_no_meal': 1500000,
+        'weekend_no_meal': 1700000,
+        'with_meal': 2500000,
         'capacity': 4
     },
     'vip_large_4': {
         'uz': 'VIP (katta) - 4 kishi',
         'ru': 'VIP (большой) - 4 человека',
-        'weekday_no_meal': 2200000,
-        'weekend_no_meal': 2500000,
-        'with_meal': 3600000,
+        'weekday_no_meal': 1600000,
+        'weekend_no_meal': 1800000,
+        'with_meal': 2800000,
         'capacity': 4
     },
     'apartment_4': {
         'uz': 'Apartament - 4 kishi',
         'ru': 'Апартамент - 4 человека',
-        'weekday_no_meal': 2500000,
-        'weekend_no_meal': 3000000,
-        'with_meal': 3800000,
+        'weekday_no_meal': 1800000,
+        'weekend_no_meal': 2000000,
+        'with_meal': 3000000,
         'capacity': 4
     },
     'cottage_6': {
         'uz': 'Kottedj - 6 kishi',
         'ru': 'Коттедж - 6 человек',
-        'weekday_no_meal': 5200000,
-        'weekend_no_meal': 5500000,
-        'with_meal': 6500000,
+        'weekday_no_meal': 3500000,
+        'weekend_no_meal': 3900000,
+        'with_meal': 5000000,
         'capacity': 6
     },
     'apartment_8': {
         'uz': 'Apartament - 8 kishi',
         'ru': 'Апартамент - 8 человек',
-        'weekday_no_meal': 5500000,
-        'weekend_no_meal': 6000000,
-        'with_meal': 7500000,
+        'weekday_no_meal': 4500000,
+        'weekend_no_meal': 5000000,
+        'with_meal': 5800000,
         'capacity': 8
     }
 }
