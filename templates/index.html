@@ -292,8 +292,7 @@
     </div>
 </section>
 
-<!-- 2. Специальные предложения (обновленная версия) -->
-<!-- Временно скрыто до осени
+<!-- 2. Специальные предложения (Акция 2+1: 12-22 сентября) -->
 <section class="special-offers section-padding">
     <div class="container">
         <div class="section-header">
@@ -304,67 +303,191 @@
         </div>
 
         <div class="offers-grid">
-            Новинка
-            <div class="offer-card animate-on-scroll">
-                <div class="offer-badge">{% if lang == 'uz' %}Yangilik{% else %}Новинка{% endif %}</div>
-                <h3>{% if lang == 'uz' %}Hafta oxiri paketi{% else %}Пакет выходного дня{% endif %}</h3>
-                <ul class="offer-features">
-                    <li><i class="fas fa-check"></i> {% if lang == 'uz' %}2 kun uchun{% else %}Проживание 2 дня{% endif %}</li>
-                    <li><i class="fas fa-check"></i> {% if lang == 'uz' %}3 mahal ovqat{% else %}3-разовое питание{% endif %}</li>
-                    <li><i class="fas fa-check"></i> {% if lang == 'uz' %}Basseyn va sauna{% else %}Бассейн и сауна{% endif %}</li>
-                    <li><i class="fas fa-check"></i> {% if lang == 'uz' %}Bepul Wi-Fi{% else %}Бесплатный Wi-Fi{% endif %}</li>
-                </ul>
-                <div class="offer-price">
-                    <span class="old-price">2 500 000</span>
-                    <span class="new-price">1 990 000</span>
-                    <span class="currency">{% if lang == 'uz' %}so'm{% else %}сум{% endif %}</span>
-                </div>
-                <a href="/booking" class="btn btn-primary btn-block">
-                    {% if lang == 'uz' %}Batafsil{% else %}Подробнее{% endif %}
-                </a>
-            </div>
-
-             Популярное
+            <!-- Акция 2+1 -->
             <div class="offer-card featured animate-on-scroll">
-                <div class="offer-badge popular">{% if lang == 'uz' %}Mashhur{% else %}Популярное{% endif %}</div>
-                <h3>{% if lang == 'uz' %}Oilaviy paket{% else %}Семейный пакет{% endif %}</h3>
-                <ul class="offer-features">
-                    <li><i class="fas fa-check"></i> {% if lang == 'uz' %}Katta oilaviy xona{% else %}Большой семейный номер{% endif %}</li>
-                    <li><i class="fas fa-check"></i> {% if lang == 'uz' %}To'liq pansion{% else %}Полное питание{% endif %}</li>
-                    <li><i class="fas fa-check"></i> {% if lang == 'uz' %}Bolalar maydonchasi{% else %}Детская площадка{% endif %}</li>
-                    <li><i class="fas fa-check"></i> {% if lang == 'uz' %}Bepul parking{% else %}Бесплатная парковка{% endif %}</li>
-                </ul>
-                <div class="offer-price">
-                    <span class="price-label">{% if lang == 'uz' %}kunlik{% else %}в день{% endif %}</span>
-                    <span class="new-price">3 500 000</span>
-                    <span class="currency">{% if lang == 'uz' %}so'm{% else %}сум{% endif %}</span>
+                <div class="offer-badge popular">
+                    {% if lang == 'uz' %}AKSIYA 2+1{% else %}АКЦИЯ 2+1{% endif %}
                 </div>
-                <a href="/booking" class="btn btn-primary btn-block">
-                    {% if lang == 'uz' %}Batafsil{% else %}Подробнее{% endif %}
-                </a>
-            </div>
-
-             Для групп
-            <div class="offer-card animate-on-scroll">
-                <div class="offer-badge">{% if lang == 'uz' %}Guruhlar uchun{% else %}Для групп{% endif %}</div>
-                <h3>{% if lang == 'uz' %}Korporativ dam olish{% else %}Корпоративный отдых{% endif %}</h3>
-                <ul class="offer-features">
-                    <li><i class="fas fa-check"></i> {% if lang == 'uz' %}10 kishidan{% else %}От 10 человек{% endif %}</li>
-                    <li><i class="fas fa-check"></i> {% if lang == 'uz' %}Konferens-zal{% else %}Конференц-зал{% endif %}</li>
-                    <li><i class="fas fa-check"></i> {% if lang == 'uz' %}Guruh uchun chegirma{% else %}Скидка для группы{% endif %}</li>
-                    <li><i class="fas fa-check"></i> {% if lang == 'uz' %}Maxsus menyu{% else %}Специальное меню{% endif %}</li>
-                </ul>
-                <div class="offer-price">
-                    <span class="discount">-20%</span>
-                    <span class="price-label">{% if lang == 'uz' %}chegirma{% else %}скидка{% endif %}</span>
+                <h3>
+                    {% if lang == 'uz' %}OQTOSH-SOY Kurorti maxsus aksiya!{% else %}Специальная акция курорта OQTOSH-SOY!{% endif %}
+                </h3>
+                <div class="offer-dates">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>12-22 {% if lang == 'uz' %}sentyabr{% else %}сентября{% endif %}</span>
                 </div>
-                <a href="/booking" class="btn btn-primary btn-block">
-                    {% if lang == 'uz' %}Batafsil{% else %}Подробнее{% endif %}
+                <p class="offer-description">
+                    {% if lang == 'uz' %}
+                    Faqat oilaviy dam olish uchun! Tog' havosi, sog'lomlashtiruvchi sharoit va toza tabiat sizni kutmoqda.
+                    {% else %}
+                    Только для семейного отдыха! Горный воздух, оздоровительные условия и чистая природа ждут вас.
+                    {% endif %}
+                </p>
+                <div class="offer-highlight">
+                    <i class="fas fa-gift"></i>
+                    <strong>
+                        {% if lang == 'uz' %}
+                        2 kun uchun to'lang – 3-kuni mutlaqo bepul!
+                        {% else %}
+                        Платите за 2 дня – 3-й день абсолютно бесплатно!
+                        {% endif %}
+                    </strong>
+                </div>
+                <div class="offer-note">
+                    <i class="fas fa-info-circle"></i>
+                    <small>
+                        {% if lang == 'uz' %}
+                        ⚠️ Eslatma: bepul kunda faqat xona taqdim etiladi (ovqatlanish va qo'shimcha xizmatlar kirmaydi)
+                        {% else %}
+                        ⚠️ Примечание: в бесплатный день предоставляется только номер (питание и дополнительные услуги не включены)
+                        {% endif %}
+                    </small>
+                </div>
+                <a href="/booking" class="btn btn-primary btn-block btn-lg">
+                    <i class="fas fa-phone-alt"></i>
+                    {% if lang == 'uz' %}Band qilish{% else %}Забронировать{% endif %}
                 </a>
             </div>
         </div>
     </div>
-</section>-->
+</section>
+
+<style>
+/* Стили для акции 2+1 */
+.special-offers {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.offer-dates {
+    color: #e74c3c;
+    font-weight: 600;
+    margin: 15px 0;
+    font-size: 1.1em;
+}
+
+.offer-dates i {
+    margin-right: 8px;
+}
+
+.offer-description {
+    color: #555;
+    line-height: 1.6;
+    margin: 15px 0;
+    font-size: 1.05em;
+}
+
+.offer-highlight {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    text-align: center;
+    font-size: 1.2em;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.offer-highlight i {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.offer-highlight strong {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.offer-note {
+    background: #fff3cd;
+    color: #856404;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border-left: 4px solid #ffc107;
+}
+
+.offer-note i {
+    margin-right: 8px;
+}
+
+.offer-note small {
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+.offer-card.featured {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.offer-card.featured::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.offer-badge.popular {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 25px;
+    display: inline-block;
+    font-weight: 600;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(245, 87, 108, 0.3);
+}
+
+.btn-lg {
+    padding: 18px 35px;
+    font-size: 1.15em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.btn-lg:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.btn-lg i {
+    margin-right: 10px;
+}
+
+.offers-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+@media (max-width: 768px) {
+    .offer-card.featured {
+        padding: 20px;
+    }
+
+    .offer-highlight {
+        font-size: 1.1em;
+        padding: 15px;
+    }
+
+    .btn-lg {
+        padding: 15px 25px;
+        font-size: 1.05em;
+    }
+}
+</style>
 <!-- Галерея превью -->
 <section class="gallery-preview section-padding">
     <div class="container">
